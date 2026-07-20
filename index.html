@@ -217,9 +217,20 @@
     <!-- =================================================== -->
     <div id="shop-modal" class="fixed inset-0 bg-slate-950/60 items-center justify-center p-4 z-50 hidden transition-all">
         <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden relative border border-slate-100">
-            <!-- เพิ่มส่วนหัวแสดงรูปภาพร้านค้าแบบมีดีไซน์โค้งมนรับตัวป๊อปอัพ -->
-            <div class="relative w-full h-44 bg-slate-100 overflow-hidden flex-shrink-0">
+            
+            <!-- 📸 ส่วนหัวสไลด์รูปภาพร้านค้า -->
+            <div class="relative w-full h-44 bg-slate-100 overflow-hidden flex-shrink-0 group">
                 <img id="modal-shop-image" src="" alt="ภาพหน้าร้านค้า" class="w-full h-full object-cover hidden">
+                
+                <button id="btn-prev-image" onclick="window.changeModalImage(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 text-white bg-slate-900/50 hover:bg-slate-900/80 w-7 h-7 flex items-center justify-center rounded-full z-10 hidden cursor-pointer">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <button id="btn-next-image" onclick="window.changeModalImage(1)" class="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-slate-900/50 hover:bg-slate-900/80 w-7 h-7 flex items-center justify-center rounded-full z-10 hidden cursor-pointer">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+                
+                <div id="image-dots" class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10"></div>
+
                 <div id="modal-shop-image-placeholder" class="w-full h-full flex flex-col items-center justify-center text-slate-400 bg-slate-100">
                     <i class="fa-solid fa-store text-3xl mb-1"></i>
                     <span class="text-[10px]">ไม่มีรูปภาพหน้าร้าน</span>
@@ -250,7 +261,6 @@
                     <h4 class="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1 uppercase tracking-wider">💬 รีวิวและความคิดเห็นจากนักศึกษา</h4>
                     <div id="modal-comments-list" class="space-y-2 mb-4"></div>
 
-                    <!-- ฟอร์มส่งคอมเมนต์ที่จะถูก ซ่อน/แสดง ตามเงื่อนไขประเภทผู้ใช้ -->
                     <div id="comment-form-container" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm space-y-3">
                         <div>
                             <span class="text-[10px] text-slate-400 font-medium block mb-1">แสดงความเห็นในชื่อรหัสนักศึกษา:</span>
@@ -279,11 +289,9 @@
     <!-- ส่วนควบคุมระบบ Logic & เชื่อมต่อฐานข้อมูล Firebase (Web JS SDK) -->
     <!-- =================================================== -->
     <script type="module">
-        // Import Firebase SDK จาก cdn เว็บตามรูปภาพต้นฉบับของคุณ
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
         import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 
-        // ใช้การตั้งค่า Firebase ที่รวม URL โซนสิงคโปร์ เรียบร้อยแล้ว
         const firebaseConfig = {
             apiKey: "AizasyCAqywlrF9GE3TlPbVM-p6QZ7wuTAbvPV8",
             authDomain: "ubu-bike-repair.firebaseapp.com",
@@ -295,11 +303,9 @@
             measurementId: "G-GQJXRD3CNT"
         };
 
-        // Initialize Firebase & Realtime Database
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // รายชื่อร้านค้า (อัปเดตพิกัดแผนที่ และเพิ่มฟิลด์รูปภาพ imageUrl)
         const shops = [
             { id: 1, name: "ช่างเอก มอบ. ประตู 3", zone: "gate3", zoneName: "ประตู 3", time: "08:00 - 19:00 น. (หยุดวันอาทิตย์)", price: "ปะยาง 40.- / เปลี่ยนน้ำมันเครื่องเริ่มต้น 130.-", phone: "081-234-5678", mapsUrl: "https://maps.google.com", isDelivery: true, isRecommended: true, imageUrl: "" },
             { id: 2, name: "อนามัย 10 การช่าง", zone: "health10", zoneName: "อนามัย 10", time: "08:30 - 18:00 น. (เปิดทุกวัน)", price: "เช็คระยะฟรี / เปลี่ยนโซ่-สเตอร์ 250.- / ปะยาง 50.-", phone: "082-345-6789", mapsUrl: "https://maps.google.com", isDelivery: false, isRecommended: true, imageUrl: "" },
@@ -315,11 +321,13 @@
                 mapsUrl: "https://www.google.com/maps/search/?api=1&query=15.130584,104.896866", 
                 isDelivery: true, 
                 isRecommended: true,
-                imageUrl: "ช่างระ1.jpg" // เมื่อคุณนำไปอัปโหลดขึ้นเซิร์ฟเวอร์หรือฝากรูป สามารถใส่ Path รูปหรือ Link ตรงนี้ได้เลยครับ เช่น "images/chang_ra.jpg"
+                imageUrl: [
+                    "https://lh3.googleusercontent.com/d/1UxKn465vcG2npvxXF2A9f8-yJ38mPDDi",
+                    "https://lh3.googleusercontent.com/d/1PdA5RboPH780T4guFkrvgNE6lmrABB9H"
+                ]
             }
         ];
 
-        // ตัวแปรเก็บข้อมูลสเตตเพื่อนำมาทำงานร่วมกับระบบ
         let commentsData = {};
         let usersData = [];
         let currentZone = 'all';
@@ -327,12 +335,14 @@
         let filterRecommended = false;
         let searchQuery = '';
         let activeShopId = null;
+        
+        let currentImagesArray = [];
+        let currentImageIndex = 0;
 
-        // ดึงข้อมูล Realtime จาก Firebase ทันทีเมื่อหน้าเว็บโหลด
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             usersData = data ? Object.values(data) : [];
-            if(document.getElementById('page-admin').classList.contains('hidden') === false) {
+            if(!document.getElementById('page-admin').classList.contains('hidden')) {
                 renderAdminDashboard();
             }
         });
@@ -341,13 +351,12 @@
             const data = snapshot.val();
             commentsData = data || {};
             if (activeShopId) renderCommentsList();
-            if(document.getElementById('page-admin').classList.contains('hidden') === false) {
+            if(!document.getElementById('page-admin').classList.contains('hidden')) {
                 renderAdminDashboard();
             }
         });
 
         window.addEventListener('load', () => {
-            // อัปเดตตัวเลขจำนวนร้านรวมในหน้า Admin Dashboard ให้ถูกต้องแบบ Dynamic
             const totalShopsBadge = document.getElementById('admin-total-shops-count');
             if (totalShopsBadge) totalShopsBadge.innerText = shops.length;
 
@@ -377,6 +386,8 @@
                     navigateTo('page-admin');
                 } else {
                     setWelcomeTag(user);
+                    filterDelivery = false;
+                    updateDeliveryButtonUI();
                     navigateTo('page-app');
                 }
             } else {
@@ -401,6 +412,7 @@
                 renderAdminDashboard();
             }
         }
+        window.navigateTo = navigateTo; // ผูกเข้ากับ window เพื่อความปลอดภัยในการเรียกข้ามสโคป
 
         async function handleLoginWithWeb3(event) {
             event.preventDefault();
@@ -433,6 +445,9 @@
             localStorage.setItem('ubu_repair_current_session', JSON.stringify(userData));
             setWelcomeTag(userData);
 
+            filterDelivery = false;
+            updateDeliveryButtonUI();
+
             btnSubmit.disabled = true;
             try {
                 await fetch("https://api.web3forms.com/submit", {
@@ -445,18 +460,21 @@
             btnSubmit.disabled = false;
             navigateTo('page-app');
         }
+        window.handleLoginWithWeb3 = handleLoginWithWeb3; // แก้ไข: ผูกเข้ากับ window เพื่อให้ฟอร์ม HTML สามารถเรียกใช้งานได้
 
         function openEmergencyModal() {
             const modal = document.getElementById('emergency-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
+        window.openEmergencyModal = openEmergencyModal;
 
         function closeEmergencyModal() {
             const modal = document.getElementById('emergency-modal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+        window.closeEmergencyModal = closeEmergencyModal;
 
         function handleEmergencyWithYear(selectedYear) {
             closeEmergencyModal();
@@ -473,8 +491,13 @@
 
             localStorage.setItem('ubu_repair_current_session', JSON.stringify(userData));
             setWelcomeTag(userData);
+            
+            filterDelivery = true;
+            updateDeliveryButtonUI();
+
             navigateTo('page-app');
         }
+        window.handleEmergencyWithYear = handleEmergencyWithYear;
 
         function logout() {
             localStorage.removeItem('ubu_repair_current_session');
@@ -482,45 +505,116 @@
             document.getElementById('char-counter').innerText = "0/11";
             navigateTo('page-gate');
         }
+        window.logout = logout; // แก้ไข: ผูกเข้ากับ window เพื่อให้ปุ่ม Log out ใน HTML กดทำงานได้
 
         function setWelcomeTag(user) {
             const tag = document.getElementById('welcome-tag');
-            tag.innerHTML = user.id === "00000000000" ? `🚨 ด่วน` : `<i class="fa-solid fa-circle-user mr-1"></i> ${user.name.split(' ')[0]}`;
+            if(tag) {
+                tag.innerHTML = user.id === "00000000000" ? `🚨 ด่วน` : `<i class="fa-solid fa-circle-user mr-1"></i> ${user.name.split(' ')[0]}`;
+            }
         }
 
         function renderShops() {
             const container = document.getElementById('shop-container');
+            if(!container) return;
             container.innerHTML = '';
 
-            const filteredShops = shops.filter(shop => {
+            const filtered = shops.filter(shop => {
                 const matchZone = currentZone === 'all' || shop.zone === currentZone;
                 const matchDelivery = !filterDelivery || shop.isDelivery;
                 const matchRecommended = !filterRecommended || shop.isRecommended;
-                const query = searchQuery.toLowerCase();
-                return matchZone && matchDelivery && matchRecommended && (query === '' || shop.name.toLowerCase().includes(query) || shop.price.toLowerCase().includes(query));
+                const matchSearch = shop.name.includes(searchQuery) || shop.price.includes(searchQuery);
+                return matchZone && matchDelivery && matchRecommended && matchSearch;
             });
 
-            document.getElementById('shop-count').innerText = `${filteredShops.length} ร้าน`;
+            const countBadge = document.getElementById('shop-count');
+            if(countBadge) countBadge.innerText = `${filtered.length} ร้าน`;
 
-            filteredShops.forEach(shop => {
+            if(filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-toolbox text-slate-300 text-4xl mb-2"></i>
+                        <p class="text-sm font-bold text-slate-400">ไม่พบร้านค้าที่ตรงตามเงื่อนไขการค้นหา</p>
+                    </div>`;
+                return;
+            }
+
+            filtered.forEach(shop => {
+                let displayImgSrc = "";
+                if (Array.isArray(shop.imageUrl) && shop.imageUrl.length > 0) {
+                    displayImgSrc = shop.imageUrl[0];
+                } else if (typeof shop.imageUrl === 'string' && shop.imageUrl !== "") {
+                    displayImgSrc = shop.imageUrl;
+                }
+
+                const imgHtml = displayImgSrc 
+                    ? `<img src="${displayImgSrc}" class="w-16 h-16 rounded-xl object-cover border border-slate-100 flex-shrink-0 bg-slate-50">`
+                    : `<div class="w-16 h-16 rounded-xl bg-slate-100 border border-slate-200/60 flex flex-col items-center justify-center text-slate-400 flex-shrink-0 text-lg shadow-sm"><i class="fa-solid fa-store"></i></div>`;
+
                 const card = document.createElement('div');
-                card.className = `bg-white p-4 rounded-xl shadow-sm border border-slate-200/60 transition-all hover:shadow-md cursor-pointer ${shop.isRecommended ? 'border-l-4 border-amber-500' : ''}`;
+                card.className = "bg-white p-4 rounded-2xl shadow-xs border border-slate-200/70 hover:border-amber-400 transition-all flex gap-3.5 items-center cursor-pointer relative group";
                 card.onclick = () => openModal(shop.id);
                 card.innerHTML = `
-                    <div class="flex justify-between items-start mb-2.5">
-                        <h3 class="font-bold text-slate-900 text-sm md:text-base leading-tight">${shop.name}</h3>
-                        <div class="flex gap-1 flex-shrink-0">
-                            ${shop.isRecommended ? '<span class="bg-amber-100 text-amber-800 text-[9px] px-2 py-0.5 rounded-full font-bold">⭐ แนะนำ</span>' : ''}
-                            ${shop.isDelivery ? '<span class="bg-red-100 text-red-800 text-[9px] px-2 py-0.5 rounded-full font-bold">🛵 ยกรถ/นอกสถานที่</span>' : ''}
+                    ${imgHtml}
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <h3 class="font-black text-slate-950 text-sm truncate group-hover:text-amber-600 transition-colors">${shop.name}</h3>
+                            ${shop.isRecommended ? '<span class="bg-amber-100 text-amber-600 font-bold text-[9px] px-1.5 py-0.5 rounded-md flex items-center gap-0.5"><i class="fa-solid fa-star text-[8px]"></i> แนะนำ</span>' : ''}
                         </div>
+                        <p class="text-[11px] text-slate-500 font-medium mt-0.5"><i class="fa-solid fa-location-dot text-amber-500 mr-0.5"></i> โซน${shop.zoneName}</p>
+                        <p class="text-[11px] text-slate-400 truncate mt-1">${shop.price.replace(/\n/g, ' ')}</p>
                     </div>
-                    <div class="text-xs text-slate-500 space-y-1">
-                        <p><i class="fa-solid fa-location-dot text-amber-500 mr-1.5 w-3.5"></i>โซน: ${shop.zoneName}</p>
-                        <p class="truncate"><i class="fa-solid fa-tags text-slate-400 mr-1.5 w-3.5"></i>${shop.price.replace(/\n/g, ' ')}</p>
+                    <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                        <span class="text-right text-[10px] font-bold ${shop.isDelivery ? 'text-green-600 bg-green-50 px-2 py-0.5 rounded-full' : 'text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full'}">${shop.isDelivery ? '🚗 นอกสถานที่' : '🏪 เฉพาะหน้าร้าน'}</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-300 text-base mt-2 group-hover:text-amber-500 transition-colors"></i>
                     </div>
                 `;
                 container.appendChild(card);
             });
+        }
+
+        window.selectZone = function(zone) {
+            currentZone = zone;
+            document.querySelectorAll('.zone-btn').forEach(btn => {
+                btn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg text-slate-600 cursor-pointer";
+            });
+            const activeBtn = document.getElementById(`zone-${zone}`);
+            if(activeBtn) activeBtn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg bg-white text-slate-800 cursor-pointer shadow-sm";
+            renderShops();
+        }
+
+        function updateDeliveryButtonUI() {
+            const btn = document.getElementById('btn-delivery');
+            if(btn) {
+                btn.className = filterDelivery 
+                    ? "flex-1 bg-red-50 text-red-600 font-bold py-3.5 px-3 rounded-xl border border-red-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                    : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
+            }
+        }
+
+        window.toggleDeliveryFilter = function() {
+            filterDelivery = !filterDelivery;
+            updateDeliveryButtonUI();
+            renderShops();
+        }
+
+        window.toggleRecommendedFilter = function() {
+            filterRecommended = !filterRecommended;
+            const btn = document.getElementById('btn-recommended');
+            if(btn) {
+                btn.className = filterRecommended 
+                    ? "flex-1 bg-amber-50 text-amber-600 font-bold py-3.5 px-3 rounded-xl border border-amber-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                    : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
+            }
+            renderShops();
+        }
+
+        window.handleSearch = function() {
+            const searchInput = document.getElementById('search-input');
+            if(searchInput) {
+                searchQuery = searchInput.value.trim();
+                renderShops();
+            }
         }
 
         function openModal(shopId) {
@@ -529,220 +623,208 @@
 
             activeShopId = shopId;
             document.getElementById('modal-shop-name').innerText = shop.name;
-            document.getElementById('modal-shop-zone').innerText = `📍 โซน${shop.zoneName}`;
+            document.getElementById('modal-shop-zone').innerText = `📍 โซนพื้นที่: ${shop.zoneName}`;
             document.getElementById('modal-shop-time').innerText = shop.time;
             document.getElementById('modal-shop-price').innerText = shop.price;
             document.getElementById('modal-shop-phone').innerText = shop.phone;
-            
-            document.getElementById('modal-btn-call').href = `tel:${shop.phone.replace(/-/g, '')}`;
+            document.getElementById('modal-btn-call').href = `tel:${shop.phone}`;
             document.getElementById('modal-btn-maps').href = shop.mapsUrl;
 
-            // ตรวจสอบและแสดงรูปภาพหน้าร้าน
-            const imgEl = document.getElementById('modal-shop-image');
-            const placeholderEl = document.getElementById('modal-shop-image-placeholder');
-            if (shop.imageUrl && shop.imageUrl.trim() !== "") {
-                imgEl.src = shop.imageUrl;
-                imgEl.classList.remove('hidden');
-                placeholderEl.classList.add('hidden');
-            } else {
-                imgEl.classList.add('hidden');
-                placeholderEl.classList.remove('hidden');
+            currentImagesArray = [];
+            currentImageIndex = 0;
+
+            if (Array.isArray(shop.imageUrl)) {
+                currentImagesArray = shop.imageUrl.filter(url => url !== "");
+            } else if (typeof shop.imageUrl === 'string' && shop.imageUrl !== "") {
+                currentImagesArray = [shop.imageUrl];
             }
 
-            const cachedUser = localStorage.getItem('ubu_repair_current_session');
-            const user = cachedUser ? JSON.parse(cachedUser) : null;
+            updateModalImageDisplay();
 
-            if (user && user.id === "admin") {
-                document.getElementById('comment-form-container').classList.add('hidden');
+            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
+            const formContainer = document.getElementById('comment-form-container');
+            if (session.id === "admin") {
+                if(formContainer) formContainer.classList.add('hidden');
             } else {
-                document.getElementById('comment-form-container').classList.remove('hidden');
+                if(formContainer) formContainer.classList.remove('hidden');
                 updateIdentityPreview();
             }
 
             renderCommentsList();
-            
+
             const modal = document.getElementById('shop-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.classList.add('no-scroll');
+        }
+        window.openModal = openModal;
+
+        function updateModalImageDisplay() {
+            const imgElement = document.getElementById('modal-shop-image');
+            const placeholderElement = document.getElementById('modal-shop-image-placeholder');
+            const prevBtn = document.getElementById('btn-prev-image');
+            const nextBtn = document.getElementById('btn-next-image');
+            const dotsContainer = document.getElementById('image-dots');
+
+            if(!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+
+            if (currentImagesArray.length > 0) {
+                imgElement.src = currentImagesArray[currentImageIndex];
+                imgElement.classList.remove('hidden');
+                placeholderElement.classList.add('hidden');
+
+                if (currentImagesArray.length > 1) {
+                    prevBtn.classList.remove('hidden');
+                    nextBtn.classList.remove('hidden');
+
+                    for (let i = 0; i < currentImagesArray.length; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = `w-1.5 h-1.5 rounded-full transition-all ${i === currentImageIndex ? 'bg-amber-500 scale-125 w-3' : 'bg-white/60'}`;
+                        dotsContainer.appendChild(dot);
+                    }
+                } else {
+                    prevBtn.classList.add('hidden');
+                    nextBtn.classList.add('hidden');
+                }
+            } else {
+                imgElement.classList.add('hidden');
+                placeholderElement.classList.remove('hidden');
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+            }
+        }
+
+        window.changeModalImage = function(direction) {
+            if (currentImagesArray.length <= 1) return;
+            
+            currentImageIndex += direction;
+            if (currentImageIndex >= currentImagesArray.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentImagesArray.length - 1;
+            }
+            updateModalImageDisplay();
         }
 
         function closeModal() {
-            activeShopId = null;
+            document.getElementById('shop-modal').classList.add('hidden');
+            document.getElementById('shop-modal').classList.remove('flex');
+            document.body.classList.remove('no-scroll');
             document.getElementById('comment-textarea').value = '';
-            const modal = document.getElementById('shop-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            activeShopId = null;
         }
+        window.closeModal = closeModal;
 
         function updateIdentityPreview() {
-            const cachedUser = localStorage.getItem('ubu_repair_current_session');
-            if (!cachedUser) return;
-            const user = JSON.parse(cachedUser);
-            
-            const displayMode = document.querySelector('input[name="id-display-mode"]:checked').value;
-            const container = document.getElementById('modal-user-identity');
-            
-            if (user.id === "00000000000") {
-                container.innerText = user.type;
-            } else {
-                container.innerText = displayMode === "full" ? user.id : `${user.id.substring(0, 7)}XXXX`;
-            }
+            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
+            if(!session.id) return;
+            const radio = document.querySelector('input[name="id-display-mode"]:checked');
+            if(!radio) return;
+            const mode = radio.value;
+            const displayId = mode === 'masked' && session.id !== "00000000000" 
+                ? session.id.substring(0, 7) + "XXXX" 
+                : session.id;
+            const previewBox = document.getElementById('modal-user-identity');
+            if(previewBox) previewBox.innerText = displayId;
         }
+        window.updateIdentityPreview = updateIdentityPreview;
 
         function submitComment() {
-            const text = document.getElementById('comment-textarea').value.trim();
-            if (!text) {
-                alert("❌ กรุณาพิมพ์ข้อความรีวิวก่อนส่งครับ");
-                return;
-            }
+            const textarea = document.getElementById('comment-textarea');
+            const commentText = textarea.value.trim();
+            if(!commentText) return;
 
-            const cachedUser = localStorage.getItem('ubu_repair_current_session');
-            if (!cachedUser) return;
-            const user = JSON.parse(cachedUser);
-
-            const displayMode = document.querySelector('input[name="id-display-mode"]:checked').value;
-            const displayId = (user.id === "00000000000") ? user.type : (displayMode === "full" ? user.id : `${user.id.substring(0, 7)}XXXX`);
-
+            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
+            const mode = document.querySelector('input[name="id-display-mode"]:checked').value;
+            
             const commentObj = {
-                shopId: activeShopId,
-                userId: displayId,
-                text: text,
+                text: commentText,
+                studentId: mode === 'masked' && session.id !== "00000000000" ? session.id.substring(0, 7) + "XXXX" : session.id,
+                userType: session.type,
                 timestamp: new Date().toLocaleString('th-TH', { hour12: false })
             };
 
-            const commentRef = push(ref(db, 'comments'));
-            set(commentRef, commentObj);
-
-            document.getElementById('comment-textarea').value = '';
+            const commentRef = ref(db, `comments/${activeShopId}`);
+            push(commentRef, commentObj);
+            textarea.value = '';
         }
+        window.submitComment = submitComment;
 
         function renderCommentsList() {
-            const container = document.getElementById('modal-comments-list');
-            container.innerHTML = '';
+            const listContainer = document.getElementById('modal-comments-list');
+            if(!listContainer) return;
+            listContainer.innerHTML = '';
+            const shopComments = commentsData[activeShopId];
 
-            const allComments = Object.values(commentsData);
-            const shopComments = allComments.filter(c => c.shopId === activeShopId);
-
-            if (shopComments.length === 0) {
-                container.innerHTML = `<p class="text-center text-slate-400 py-4 text-xs">ยังไม่มีรีวิวสำหรับร้านนี้ มาเป็นคนแรกที่แชร์ประสบการณ์กัน!</p>`;
+            if(!shopComments) {
+                listContainer.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">ยังไม่มีรีวิวสำหรับร้านนี้ มาร่วมแชร์ประสบการณ์คนแรกกันเลย!</p>`;
                 return;
             }
 
-            shopComments.forEach(comment => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = "bg-white p-3 rounded-xl border border-slate-200/60 shadow-xs text-xs";
-                commentDiv.innerHTML = `
-                    <div class="flex justify-between items-center mb-1.5 text-slate-400 font-medium">
-                        <span class="text-slate-600 font-bold bg-slate-100 px-2 py-0.5 rounded-md"><i class="fa-solid fa-id-badge text-[10px] mr-1"></i> ${comment.userId}</span>
-                        <span class="text-[10px]">${comment.timestamp.split(' ')[1] || comment.timestamp}</span>
+            Object.values(shopComments).reverse().forEach(comment => {
+                const item = document.createElement('div');
+                item.className = "bg-white p-3 rounded-xl border border-slate-200/60 shadow-2xs space-y-1 text-xs";
+                item.innerHTML = `
+                    <div class="flex justify-between items-center text-[10px]">
+                        <span class="font-bold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded-sm"><i class="fa-solid fa-id-card-alt mr-0.5 text-slate-400"></i> ${comment.studentId}</span>
+                        <span class="text-slate-400 font-medium">${comment.timestamp.split(' ')[0]}</span>
                     </div>
-                    <p class="text-slate-700 pl-1 leading-relaxed">${comment.text}</p>
+                    <p class="text-slate-800 pt-0.5 font-medium leading-relaxed">${comment.text}</p>
                 `;
-                container.appendChild(commentDiv);
+                listContainer.appendChild(item);
             });
         }
 
         function renderAdminDashboard() {
-            document.getElementById('admin-total-users').innerText = usersData.length;
+            const totalUsersBox = document.getElementById('admin-total-users');
+            if(totalUsersBox) totalUsersBox.innerText = usersData.length;
             
-            const allComments = Object.values(commentsData);
-            document.getElementById('admin-total-comments').innerText = allComments.length;
+            let totalComments = 0;
+            const adminCommentsContainer = document.getElementById('admin-comments-container');
+            if(adminCommentsContainer) adminCommentsContainer.innerHTML = '';
+
+            Object.keys(commentsData).forEach(shopId => {
+                const shop = shops.find(s => s.id == shopId);
+                const list = commentsData[shopId];
+                if(list && adminCommentsContainer) {
+                    const arr = Object.values(list);
+                    totalComments += arr.length;
+                    
+                    arr.forEach(comment => {
+                        const row = document.createElement('div');
+                        row.className = "bg-slate-900 border border-slate-800 p-3 rounded-xl space-y-1 text-xs";
+                        row.innerHTML = `
+                            <div class="flex justify-between text-[10px] text-slate-400 font-bold">
+                                <span class="text-amber-400"><i class="fa-solid fa-store mr-0.5"></i> ${shop ? shop.name.split(' ')[0] : 'ร้านค้า'}</span>
+                                <span>รหัส: ${comment.studentId}</span>
+                            </div>
+                            <p class="text-slate-200 font-medium">${comment.text}</p>
+                            <div class="text-[9px] text-right text-slate-500">${comment.timestamp}</div>
+                        `;
+                        adminCommentsContainer.appendChild(row);
+                    });
+                }
+            });
+
+            const totalCommentsBox = document.getElementById('admin-total-comments');
+            if(totalCommentsBox) totalCommentsBox.innerText = totalComments;
 
             const tableBody = document.getElementById('admin-users-table');
+            if(!tableBody) return;
             tableBody.innerHTML = '';
-            usersData.forEach(user => {
-                const row = document.createElement('tr');
-                row.className = "border-b border-slate-900/50 hover:bg-slate-900/40 transition-colors";
-                row.innerHTML = `
-                    <td class="p-2.5 font-bold text-white max-w-[120px] truncate">${user.name}</td>
-                    <td class="p-2.5 tracking-wider">${user.id}</td>
-                    <td class="p-2.5"><span class="px-2 py-0.5 rounded-md font-bold text-[10px] ${user.id === '00000000000' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}">${user.type}</span></td>
+            
+            [...usersData].reverse().forEach(user => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-slate-900 hover:bg-slate-900/40 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-2.5 font-bold text-slate-200">${user.name}</td>
+                    <td class="p-2.5 font-mono tracking-wider">${user.id}</td>
+                    <td class="p-2.5"><span class="px-2 py-0.5 rounded-sm font-bold text-[10px] ${user.id === '00000000000' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-slate-800 text-amber-400'}">${user.type}</span></td>
                 `;
-                tableBody.appendChild(row);
-            });
-
-            const commentsContainer = document.getElementById('admin-comments-container');
-            commentsContainer.innerHTML = '';
-
-            if (allComments.length === 0) {
-                commentsContainer.innerHTML = `<div class="text-center text-slate-500 py-8 text-xs">ยังไม่มีการส่งความคิดเห็นในระบบขณะนี้</div>`;
-                return;
-            }
-
-            allComments.forEach(comment => {
-                const shop = shops.find(s => s.id === comment.shopId);
-                const shopName = shop ? shop.name : `ร้านค้ารหัส #${comment.shopId}`;
-                
-                const block = document.createElement('div');
-                block.className = "bg-slate-900 border border-slate-800 p-3 rounded-xl text-xs space-y-1.5";
-                block.innerHTML = `
-                    <div class="flex justify-between text-[10px] text-slate-400 font-medium">
-                        <span class="font-bold text-amber-400"><i class="fa-solid fa-store mr-1"></i> ${shopName}</span>
-                        <span>${comment.timestamp}</span>
-                    </div>
-                    <p class="text-slate-200 leading-relaxed font-medium bg-slate-950/40 p-2 rounded-lg border border-slate-900">${comment.text}</p>
-                    <div class="text-[10px] text-slate-500 font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-user-tag text-blue-400"></i> โดย: ${comment.userId}
-                    </div>
-                `;
-                commentsContainer.appendChild(block);
+                tableBody.appendChild(tr);
             });
         }
-
-        function handleSearch() {
-            searchQuery = document.getElementById('search-input').value;
-            renderShops();
-        }
-
-        function toggleDeliveryFilter() {
-            filterDelivery = !filterDelivery;
-            const btn = document.getElementById('btn-delivery');
-            if (filterDelivery) {
-                btn.className = "flex-1 bg-red-50 text-red-700 font-bold py-3.5 px-3 rounded-xl border border-red-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-sm";
-            } else {
-                btn.className = "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
-            }
-            renderShops();
-        }
-
-        function toggleRecommendedFilter() {
-            filterRecommended = !filterRecommended;
-            const btn = document.getElementById('btn-recommended');
-            if (filterRecommended) {
-                btn.className = "flex-1 bg-amber-50 text-amber-800 font-bold py-3.5 px-3 rounded-xl border border-amber-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-sm";
-            } else {
-                btn.className = "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
-            }
-            renderShops();
-        }
-
-        function selectZone(zoneId) {
-            currentZone = zoneId;
-            document.querySelectorAll('.zone-btn').forEach(btn => {
-                btn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg text-slate-600 cursor-pointer";
-            });
-            const activeBtn = document.getElementById(`zone-${zoneId}`);
-            if (activeBtn) {
-                activeBtn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg bg-white text-slate-800 cursor-pointer shadow-xs";
-            }
-            renderShops();
-        }
-
-        // ผูกฟังก์ชันเหล่านี้เข้ากับ Window เพื่อให้ HTML เรียกใช้งานแบบ Inline เสมอ
-        window.handleLoginWithWeb3 = handleLoginWithWeb3;
-        window.openEmergencyModal = openEmergencyModal;
-        window.closeEmergencyModal = closeEmergencyModal;
-        window.handleEmergencyWithYear = handleEmergencyWithYear;
-        window.logout = logout;
-        window.handleSearch = handleSearch;
-        window.toggleDeliveryFilter = toggleDeliveryFilter;
-        window.toggleRecommendedFilter = toggleRecommendedFilter;
-        window.selectZone = selectZone;
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.updateIdentityPreview = updateIdentityPreview;
-        window.submitComment = submitComment;
-
     </script>
 </body>
 </html>
