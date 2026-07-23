@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UBU Bike Repair - รวมร้านซ่อมรถรอบ มอบ.</title>
+    <title>UBU Motorcycle Platform - รวมร้านซ่อมรถมอเตอร์ไซค์รอบรั้ว ม.อุบลฯ</title>
     <!-- เรียกใช้ Tailwind CSS ผ่าน CDN สำหรับปรับแต่งหน้าตาเว็บ -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,7 +25,7 @@
 
             <div class="text-center mb-6 mt-2">
                 <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-50 text-amber-500 text-3xl mb-3 shadow-inner">🛠️</div>
-                <h2 class="text-2xl font-black text-slate-900">UBU Bike Repair</h2>
+                <h2 class="text-2xl font-black text-slate-900">UBU Motorcycle Platform</h2>
                 <p class="text-xs text-slate-500 mt-1">ระบบค้นหาร้านซ่อมรถมอเตอร์ไซค์รอบรั้ว ม.อุบลฯ</p>
                 <div class="mt-2 text-[10px] inline-block bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-medium">Ubon Ratchathani University</div>
             </div>
@@ -51,22 +51,28 @@
                            class="w-full text-sm px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all tracking-wider">
                 </div>
                 
-                <button type="submit" id="btn-submit-form" class="w-full bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 cursor-pointer">
+                <button type="submit" id="btn-submit-form" class="w-full bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white font-bold py-2.5 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 cursor-pointer">
                     <span id="submit-text">เข้าสู่เว็บไซต์ระบบแนะนำ</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
             </form>
 
-            <div class="relative flex py-4 items-center">
+            <div class="relative flex py-2 items-center">
                 <div class="flex-grow border-t border-slate-200"></div>
                 <span class="flex-shrink mx-4 text-slate-400 text-[11px] font-bold tracking-wider">หรือเกิดเหตุฉุกเฉิน?</span>
                 <div class="flex-grow border-t border-slate-200"></div>
             </div>
 
-            <button onclick="window.openEmergencyModal()" class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer animate-pulse">
+            <button onclick="window.openEmergencyModal()" class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-bold py-2.5 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer animate-pulse">
                 <i class="fa-solid fa-triangle-exclamation"></i>
                 <span>เข้าใช้งานด่วน (ไม่ต้องกรอกข้อมูล)</span>
             </button>
+       <!-- กล่องข้อความอธิบายใต้ปุ่มสีแดง (เพิ่มเฉพาะส่วนนี้) -->
+<div style="margin-top: 10px; background: rgba(231, 76, 60, 0.08); border: 1px dashed #e74c3c; border-radius: 8px; padding: 10px 12px; font-family: 'Prompt', 'Kanit', sans-serif; text-align: center;">
+    <p style="font-size: 13px; color: #c0392b; line-height: 1.4; margin: 0; font-weight: 400;">
+        <strong style="color: #e74c3c;">เข้าใช้งานด่วน:</strong> แสดงเฉพาะร้านซ่อมที่รับบริการนอกสถานที่ เพื่ออำนวยความสะดวกแก่ผู้ที่ต้องการใช้บริการอย่างเร่งด่วน
+    </p>
+</div>
         </div>
     </div>
 
@@ -109,7 +115,7 @@
         <header class="bg-amber-500 text-white py-5 px-4 shadow-md sticky top-0 z-30">
             <div class="max-w-md mx-auto flex justify-between items-center">
                 <div>
-                    <h1 class="text-xl font-black flex items-center gap-2"><span>🛠️ UBU Bike Repair</span></h1>
+                    <h1 class="text-xl font-black flex items-center gap-2"><span>🛠️ UBU Bike Motorcyle Platform</span></h1>
                     <p class="text-[10px] opacity-90 mt-0.5">รวมจุดบริการช่างรอบมหาวิทยาลัยอุบลฯ</p>
                 </div>
                 <div class="flex items-center gap-1.5">
@@ -118,7 +124,44 @@
                 </div>
             </div>
         </header>
+<div style="background: linear-gradient(135deg, #2b0c0c 0%, #451010 100%); border: 2px solid #ff4d4d; border-radius: 10px; padding: 18px 20px; max-width: 700px; width: 100%; margin: 15px auto; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); font-family: 'Prompt', 'Kanit', sans-serif; position: relative; overflow: hidden; box-sizing: border-box;">
+    <!-- แถบเส้นเตือนสีแดงสลับดำด้านบน -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: repeating-linear-gradient(45deg, #ff4d4d, #ff4d4d 12px, #1a1a1a 12px, #1a1a1a 24px);"></div>
+    
+    <!-- CSS สำหรับทำให้กระพริบ -->
+    <style>
+        @keyframes blink-warning {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .blinking-text {
+            animation: blink-warning 1.2s infinite ease-in-out;
+            color: #ffcccc !important;
+            font-weight: bold;
+        }
+    </style>
 
+    <!-- หัวข้อแจ้งเตือน -->
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 8px;">
+        <span class="blinking-text" style="font-size: 18px; background: rgba(255, 77, 77, 0.2); padding: 6px 10px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;">🚨</span>
+        <span style="font-size: 16px; font-weight: bold; color: #ffffff; letter-spacing: 0.5px;">แจ้งเพื่อทราบ / ข้อกำหนดการใช้งานเว็บไซต์</span>
+    </div>
+
+    <!-- เนื้อหาข้อความทั้งหมด (ตัวหนังสือสีขาว) -->
+    <div style="font-size: 14px; color: #ffffff; line-height: 1.5; font-weight: 300;">
+        <p style="margin-bottom: 10px;">
+            เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นส่วนหนึ่งของโครงการพัฒนาแพลตฟอร์มรวบรวมข้อมูลร้านซ่อมรถจักรยานยนต์รอบมหาวิทยาลัยอุบลราชธานี โดยมีวัตถุประสงค์เพื่ออำนวยความสะดวกในการค้นหาข้อมูลร้านซ่อมและใช้เป็นข้อมูลประกอบการตัดสินใจของผู้ใช้งาน เว็บไซต์ไม่มีส่วนได้ส่วนเสียกับร้านซ่อมใดเป็นพิเศษ และนำเสนอข้อมูลอย่างเป็นกลาง
+        </p>
+        
+        <!-- กรอบย่อยเน้นข้อความเรื่องราคา พร้อมจุดกระพริบเตือน -->
+        <div style="background: rgba(255, 77, 77, 0.12); border-left: 4px solid #ff4d4d; padding: 10px 12px; border-radius: 0 6px 6px 0; margin-top: 8px;">
+            <p style="font-size: 13px; color: #ffffff; line-height: 1.4; margin: 0;">
+                <span class="blinking-text">⚠️ ข้อสังเกตด้านราคา:</span> ข้อมูลด้านราคาเป็นเพียงราคาโดยประมาณ เนื่องจากค่าใช้จ่ายในการซ่อมขึ้นอยู่กับหลายปัจจัย เช่น รุ่นรถ ยี่ห้ออะไหล่ ลักษณะความเสียหาย และอัตราค่าบริการของแต่ละร้าน ซึ่งอาจแตกต่างกัน ผู้ใช้งานควรสอบถามรายละเอียดและราคาจากร้านโดยตรงก่อนตัดสินใจใช้บริการ
+            </p>
+        </div>
+    </div>
+</div>
         <main class="max-w-md mx-auto p-4 pb-20">
             <div class="relative mb-5">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"><i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i></span>
@@ -158,7 +201,7 @@
         <header class="bg-slate-950 border-b border-slate-800 py-5 px-4 sticky top-0 z-30 shadow-xl">
             <div class="max-w-4xl mx-auto flex justify-between items-center">
                 <div>
-                    <h1 class="text-xl font-black text-amber-400 flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> UBU Bike Repair Dashboard</h1>
+                    <h1 class="text-xl font-black text-amber-400 flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> UBU Motorcycles Dashboard</h1>
                     <p class="text-[10px] text-slate-400 mt-0.5">ระบบจัดการและตรวจสอบข้อมูลหลังบ้านหลังระบบซ่อมรถ</p>
                 </div>
                 <button onclick="window.logout()" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white font-bold text-xs px-4 py-2 rounded-xl border border-red-500/30 transition-all cursor-pointer"><i class="fa-solid fa-right-from-bracket mr-1"></i> ออกจากระบบ Admin</button>
@@ -179,7 +222,7 @@
                 </div>
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 shadow-md col-span-2 md:col-span-1">
                     <span class="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">🛠️ ร้านค้าในระบบ</span>
-                    <span id="admin-total-shops-count" class="text-3xl font-black text-emerald-400 block mt-1">4</span>
+                    <span id="admin-total-shops-count" class="text-3xl font-black text-emerald-400 block mt-1">0</span>
                     <span class="text-[9px] text-slate-400">จุดบริการรอบ ม.อุบลฯ</span>
                 </div>
             </div>
@@ -307,21 +350,34 @@
         const db = getDatabase(app);
 
         const shops = [
-            { id: 1, 
+            { 
+                id: 1, 
                 name: "ช่างพ่อเกียรติ", 
                 zone: "market", 
                 zoneName: "ตลาดบังเอิญ", 
                 time: "10.00-21.00 น. (หยุดวันอาทิตย์)", 
-                price: "ปะยาง 40.- / เปลี่ยนน้ำมันเครื่องเริ่มต้น 130.-", 
-                phone: "081-234-5678", 
-                mapsUrl: "https://maps.google.com", 
+                price: "เปลี่ยนยางใน เริ่มต้น100-130 / เปลี่ยนน้ำมันเครื่อง 140-150/ เปลี่ยนผ้าเบรค 350-950 / เปลี่ยนแบตเตอรี่ 350-400", 
+                phone: "0658756282", 
+                mapsUrl: "https://maps.app.goo.gl/TeoTBzh6vRNco5dRA", 
                 isDelivery: true, 
                 isRecommended: true, 
-                imageUrl: "" },
-            { id: 2, name: "อนามัย 10 การช่าง", zone: "health10", zoneName: "อนามัย 10", time: "08:30 - 18:00 น. (เปิดทุกวัน)", price: "เช็คระยะฟรี / เปลี่ยนโซ่-สเตอร์ 250.- / ปะยาง 50.-", phone: "082-345-6789", mapsUrl: "https://maps.google.com", isDelivery: false, isRecommended: true, imageUrl: "" },
-            { id: 3, name: "ช่างเต๋า ซ่อมมอเตอร์ไซค์ (ตลาดบังเอิญ)", zone: "market", zoneName: "ตลาดบังเอิญ", time: "09:00 - 20:00 น. (เปิดทุกวัน)", price: "เปลี่ยนน้ำมันเครื่อง 120.- / ยางนอกเริ่มต้น 350.-", phone: "083-456-7890", mapsUrl: "https://maps.google.com", isDelivery: true, isRecommended: false, imageUrl: "" },
+                imageUrl: ["https://i.postimg.cc/520NxynV/r-anph-xke-yrt.jpg"] 
+            },
             { 
-                id: 4, 
+                id: 2,   
+                name: "ร้าน OM อะไหล่มอเตอร์ไซค์", 
+                zone: "health10", 
+                zoneName: "อนามัย 10", 
+                time: "08.00-20.00 น. (หยุดวันเสาร์)", 
+                price: "", 
+                phone: "083-739-8878", 
+                mapsUrl: "https://maps.app.goo.gl/1VZUYYfpuVnWYD7K6", 
+                isDelivery: true, 
+                isRecommended: false, 
+                imageUrl: ["https://i.postimg.cc/C5cCqdDL/OM-xa-hil.jpg"] 
+            },
+            { 
+                id: 3, 
                 name: "ร้านช่างระ (ข้างเซฟแลนด์)", 
                 zone: "health10", 
                 zoneName: "อนามัย 10", 
@@ -335,7 +391,98 @@
                     "https://lh3.googleusercontent.com/d/1UxKn465vcG2npvxXF2A9f8-yJ38mPDDi",
                     "https://lh3.googleusercontent.com/d/1PdA5RboPH780T4guFkrvgNE6lmrABB9H"
                 ]
-            }
+            },
+            { 
+                id: 4,   
+                name: "ร้านอุดรเจริญยนต์", 
+                zone: "gate3", 
+                zoneName: "ประตู3", 
+                time: "07.00-19.00 น. (เปิดทุกวัน)", 
+                price: "เปลี่ยนยางใน 120 /เปลี่ยนน้ำมันเครื่อง 120-150 / เปลี่ยนผ้าเบรค 80เบครหน้า  120เบครหลัง  / เปลี่ยนแบต350-500", 
+                phone: "084-936-8139", 
+                mapsUrl: "https://maps.app.goo.gl/eF8ZsmF77QourS9YA", 
+                isDelivery: false, 
+                isRecommended: true, 
+                imageUrl: ["https://i.postimg.cc/3NwhBbyq/x-dm.jpg"] 
+            },
+            { 
+                id: 5,   
+                name: "ร้านช่างตุ้ง", 
+                zone: "gate3", 
+                zoneName: "ประตู3", 
+                time: "09.00-20.00 น. (เปิดทุกวัน)", 
+                price: "", 
+                phone: "086-876-2535", 
+                mapsUrl: "https://maps.app.goo.gl/MEKSTPqYn3Q14SuW7", 
+                isDelivery: true, 
+                isRecommended: false, 
+                imageUrl: ["https://i.postimg.cc/P574y6xB/tt.jpg"] 
+            },
+            { 
+                id: 6,   
+                name: "ร้าน B.อุดมเจริญยนต์", 
+                zone: "gate3", 
+                zoneName: "ประตู3", 
+                time: "09.00-19.00 น. (หยุดวันอาทิตย์)", 
+                price: "", 
+                phone: "086-876-2535", 
+                mapsUrl: "https://maps.app.goo.gl/MEKSTPqYn3Q14SuW7", 
+                isDelivery: true, 
+                isRecommended: false, 
+                imageUrl: ["https://lh3.googleusercontent.com/d/16bPQFpG3Eh9KIaTQ2MzgZ2b-JNSHe_hu"] 
+            },
+            { 
+                id: 7,   
+                name: "ร้านช่างเด่น", 
+                zone: "gate3", 
+                zoneName: "ประตู3", 
+                time: "09.00-19.00 น. (หยุดวันอาทิตย์)", 
+                price: "", 
+                phone: "086-876-2535", 
+                mapsUrl: "https://maps.app.goo.gl/MEKSTPqYn3Q14SuW7", 
+                isDelivery: true, 
+                isRecommended: false, 
+                imageUrl: ["https://lh3.googleusercontent.com/d/16bPQFpG3Eh9KIaTQ2MzgZ2b-JNSHe_hu"] 
+            },
+            {
+        id: 8,
+        name: "ร้าน อาร์มมอเตอร์ไซค์",
+        zone: "gate3",
+        zoneName: "ประตู3",
+        time: "06.00-19.00 น. (เปิดทุกวัน)",
+        price: "",
+        phone: "086-867-7732",
+        mapsUrl: "https://maps.app.goo.gl/482viek7WZNapxLa7",
+        isDelivery: true,
+        isRecommended: false,
+        imageUrl: "https://lh3.googleusercontent.com/d/1cVmCcmsshDB5XLoJsK8sc-PObVdtE7j3"
+    },
+{
+        id: 9,
+        name: "ช่างสิทธิ์ บ้านแมด",
+        zone: "gate3",
+        zoneName: "ประตู3",
+        time: "10.00-20.00 น.",
+        price: "เปลี่ยนยางใน 120 / เปลี่ยนน้ำมันเครื่อง 100-300 / เปลี่ยนผ้าเบรค 80เบรคหน้า  100-120-160/ เปลี่ยนแบต350-550",
+        phone: "0982500625",
+        mapsUrl: "https://maps.app.goo.gl/uUZji4uiS15BwyJ8A",
+        isDelivery: false,
+        isRecommended: true,
+        imageUrl: "https://lh3.googleusercontent.com/d/1TtLJxuTGiEGSbxBf0Im7iZYyfz89uLPT"
+    },
+    {
+        id: 10,
+        name: "ร้านไมตรีบริการ",
+        zone: "market",
+        zoneName: "ตลาดบังเอิญ",
+        time: "08.30-17.30 น.",
+        price: "เปลี่ยนยางใน 120-140 / เปลี่ยนน้ำมันเครื่อง 120-200 / เปลี่ยนผ้าเบรค 90-200 / เปลี่ยนแบต350-900(เเท้)",
+        phone: "0990725688",
+        mapsUrl: "https://maps.app.goo.gl/7nbNytWmh9ASEXEP7",
+        isDelivery: false,
+        isRecommended: true,
+        imageUrl: "https://lh3.googleusercontent.com/d/1bV7o6-51v8LeGltwlfTjVeja0_isEn5I"
+    }
         ];
 
         let commentsData = {};
@@ -349,6 +496,7 @@
         let currentImagesArray = [];
         let currentImageIndex = 0;
 
+        // ดึงข้อมูลเรียลไทม์จาก Firebase Realtime Database
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             usersData = data ? Object.values(data) : [];
@@ -374,21 +522,24 @@
             const charCounter = document.getElementById('char-counter');
 
             studentIdInput.addEventListener('input', (e) => {
-                let val = e.target.value;
-                if(val.toLowerCase() === 'admin') {
-                    charCounter.innerText = "🔑 ผู้ดูแล";
-                    charCounter.className = "text-[10px] text-amber-500 font-bold";
-                    return;
-                }
-                let cleanValue = val.replace(/[^0-9a-zA-Z]/g, '');
-                if(/^\d/.test(cleanValue)) {
-                    cleanValue = cleanValue.replace(/[^0-9]/g, '').substring(0, 11);
-                }
-                e.target.value = cleanValue;
-                charCounter.innerText = `${cleanValue.length}/11`;
-                charCounter.className = cleanValue.length === 11 ? "text-[10px] text-green-500 font-bold" : "text-[10px] text-slate-400 font-medium";
-            });
+            let val = e.target.value;
+            
+            // ถ้าพิมพ์เป็นรหัสแอดมิน ให้ยอมรับได้ทันทีโดยไม่จำกัดตัวเลขหรือความยาว
+            if (val.toLowerCase() === 'adminsdi66') {
+                charCounter.innerText = "🔑 ผู้ดูแลระบบ";
+                charCounter.className = "text-[10px] text-amber-500 font-bold";
+                return;
+            }
 
+            // เงื่อนไขเดิมสำหรับรหัสนักศึกษาทั่วไป (รับเฉพาะตัวเลข 11 หลัก)
+            let cleanValue = val.replace(/[^0-9-a-zA-Z]/g, '');
+            if (/^\d/.test(cleanValue)) {
+                cleanValue = cleanValue.replace(/[^0-9]/g, '').substring(0, 11);
+            }
+            e.target.value = cleanValue;
+            charCounter.innerText = `${cleanValue.length}/11`;
+            charCounter.className = cleanValue.length === 11 ? "text-[10px] text-green-500 font-bold" : "text-[10px] text-slate-400 font-medium";
+        });
             const cachedUser = localStorage.getItem('ubu_repair_current_session');
             if (cachedUser) {
                 const user = JSON.parse(cachedUser);
@@ -422,15 +573,15 @@
                 renderAdminDashboard();
             }
         }
-        window.navigateTo = navigateTo; // ผูกเข้ากับ window เพื่อความปลอดภัยในการเรียกข้ามสโคป
+        window.navigateTo = navigateTo;
 
+        // จัดการเข้าสู่ระบบแบบปกติ
         async function handleLoginWithWeb3(event) {
             event.preventDefault();
             const fullname = document.getElementById('user-fullname').value.trim();
             const studentId = document.getElementById('user-studentid').value.trim();
-            const btnSubmit = document.getElementById('btn-submit-form');
 
-            if (studentId.toLowerCase() === 'admin') {
+           if (studentId.toLowerCase() === 'adminsdi66') {
                 const adminSession = { name: "ผู้ดูแลระบบ", id: "admin", type: "👨‍💻 ผู้ดูแลระบบ" };
                 localStorage.setItem('ubu_repair_current_session', JSON.stringify(adminSession));
                 navigateTo('page-admin');
@@ -442,397 +593,370 @@
                 return;
             }
 
-            const userData = {
+            const userSession = {
                 name: fullname,
                 id: studentId,
-                type: "สมาชิกทั่วไป",
-                timestamp: new Date().toLocaleString('th-TH', { hour12: false })
+                type: "นักศึกษาทั่วไป",
+                loginAt: new Date().toLocaleString('th-TH')
             };
 
-            const userRef = ref(db, 'users/' + studentId);
-            set(userRef, userData);
+            // บันทึกลง Firebase
+            const newUserRef = push(ref(db, 'users'));
+            await set(newUserRef, userSession);
 
-            localStorage.setItem('ubu_repair_current_session', JSON.stringify(userData));
-            setWelcomeTag(userData);
-
-            filterDelivery = false;
-            updateDeliveryButtonUI();
-
-            btnSubmit.disabled = true;
-            try {
-                await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ access_key: document.getElementById('web3-access-key').value, name: fullname, student_id: studentId })
-                });
-            } catch (e) {}
-            
-            btnSubmit.disabled = false;
+            localStorage.setItem('ubu_repair_current_session', JSON.stringify(userSession));
+            setWelcomeTag(userSession);
             navigateTo('page-app');
         }
-        window.handleLoginWithWeb3 = handleLoginWithWeb3; // แก้ไข: ผูกเข้ากับ window เพื่อให้ฟอร์ม HTML สามารถเรียกใช้งานได้
+        window.handleLoginWithWeb3 = handleLoginWithWeb3;
 
+        // โหมดฉุกเฉิน
         function openEmergencyModal() {
-            const modal = document.getElementById('emergency-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            document.getElementById('emergency-modal').classList.remove('hidden');
+            document.getElementById('emergency-modal').classList.add('flex');
         }
         window.openEmergencyModal = openEmergencyModal;
 
         function closeEmergencyModal() {
-            const modal = document.getElementById('emergency-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            document.getElementById('emergency-modal').classList.add('hidden');
+            document.getElementById('emergency-modal').classList.remove('flex');
         }
         window.closeEmergencyModal = closeEmergencyModal;
 
-        function handleEmergencyWithYear(selectedYear) {
+      async function handleEmergencyWithYear(year) {
             closeEmergencyModal();
-            
-            const userData = {
-                name: "ผู้ใช้เคสฉุกเฉิน",
-                id: "00000000000",
-                type: `🚨 เคสฉุกเฉิน (${selectedYear})`,
-                timestamp: new Date().toLocaleString('th-TH', { hour12: false })
+            const emergencySession = {
+                name: "ผู้ใช้เหตุฉุกเฉิน",
+                id: `EMERGENCY-${year}`,
+                type: `🚨 ผู้ใช้ฉุกเฉิน (${year})`,
+                loginAt: new Date().toLocaleString('th-TH')
             };
 
-            const ranId = push(ref(db, 'users')).key;
-            set(ref(db, 'users/' + ranId), userData);
+            const newUserRef = push(ref(db, 'users'));
+            await set(newUserRef, emergencySession);
 
-            localStorage.setItem('ubu_repair_current_session', JSON.stringify(userData));
-            setWelcomeTag(userData);
+            localStorage.setItem('ubu_repair_current_session', JSON.stringify(emergencySession));
             
-            filterDelivery = true;
-            updateDeliveryButtonUI();
+            // บันทึกสถานะว่าล็อกโหมดฉุกเฉิน
+            localStorage.setItem('ubu_emergency_locked', 'true');
 
+            setWelcomeTag(emergencySession);
             navigateTo('page-app');
+
+            // สั่งทำงานฟิลเตอร์นอกสถานที่ และซ่อนปุ่มไม่ให้กดเปลี่ยนได้
+            setTimeout(() => {
+                if (typeof window.toggleDeliveryFilter === 'function') {
+                    // ถ้ายังไม่ได้เปิด ให้สั่งเปิดฟิลเตอร์
+                    window.toggleDeliveryFilter();
+                }
+                // ซ่อนปุ่มรับซ่อมนอกสถานที่ หรือปุ่มตัวกรองอื่นๆ ไม่ให้ผู้ใช้กดปิดได้
+                const btnDelivery = document.getElementById('btn-delivery');
+                if (btnDelivery) {
+                    btnDelivery.style.pointerEvents = 'none'; // ปิดไม่ให้คลิก
+                    btnDelivery.style.opacity = '0.8'; // ทำให้ดูเหมือนถูกล็อก
+                    // หรือถ้าต้องการซ่อนปุ่มไปเลย ให้ใช้บรรทัดนี้แทน: btnDelivery.style.display = 'none';
+                }
+            }, 300);
         }
         window.handleEmergencyWithYear = handleEmergencyWithYear;
 
-        function logout() {
-            localStorage.removeItem('ubu_repair_current_session');
-            document.getElementById('login-form').reset();
-            document.getElementById('char-counter').innerText = "0/11";
-            navigateTo('page-gate');
-        }
-        window.logout = logout; // แก้ไข: ผูกเข้ากับ window เพื่อให้ปุ่ม Log out ใน HTML กดทำงานได้
-
         function setWelcomeTag(user) {
-            const tag = document.getElementById('welcome-tag');
-            if(tag) {
-                tag.innerHTML = user.id === "00000000000" ? `🚨 ด่วน` : `<i class="fa-solid fa-circle-user mr-1"></i> ${user.name.split(' ')[0]}`;
+            const welcomeTag = document.getElementById('welcome-tag');
+            if (welcomeTag) {
+                welcomeTag.innerText = user.id.startsWith('EMERGENCY') ? user.id : `${user.name} (${user.id})`;
             }
         }
 
+        function logout() {
+            localStorage.removeItem('ubu_repair_current_session');
+            navigateTo('page-gate');
+        }
+        window.logout = logout;
+
+        // ฟังก์ชั่นแสดงรายชื่อร้านค้า
         function renderShops() {
             const container = document.getElementById('shop-container');
-            if(!container) return;
             container.innerHTML = '';
 
             const filtered = shops.filter(shop => {
                 const matchZone = currentZone === 'all' || shop.zone === currentZone;
                 const matchDelivery = !filterDelivery || shop.isDelivery;
                 const matchRecommended = !filterRecommended || shop.isRecommended;
-                const matchSearch = shop.name.includes(searchQuery) || shop.price.includes(searchQuery);
+                const matchSearch = searchQuery === '' || 
+                    shop.name.includes(searchQuery) || 
+                    shop.price.includes(searchQuery) ||
+                    shop.zoneName.includes(searchQuery);
+
                 return matchZone && matchDelivery && matchRecommended && matchSearch;
             });
 
-            const countBadge = document.getElementById('shop-count');
-            if(countBadge) countBadge.innerText = `${filtered.length} ร้าน`;
+            document.getElementById('shop-count').innerText = `${filtered.length} ร้าน`;
 
-            if(filtered.length === 0) {
+            if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-12 bg-white rounded-2xl border border-slate-200">
-                        <i class="fa-solid fa-toolbox text-slate-300 text-4xl mb-2"></i>
-                        <p class="text-sm font-bold text-slate-400">ไม่พบร้านค้าที่ตรงตามเงื่อนไขการค้นหา</p>
+                    <div class="text-center py-12 text-slate-400 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-store-slash text-4xl mb-2"></i>
+                        <p class="text-xs font-bold">ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา</p>
                     </div>`;
                 return;
             }
 
             filtered.forEach(shop => {
-                let displayImgSrc = "";
-                if (Array.isArray(shop.imageUrl) && shop.imageUrl.length > 0) {
-                    displayImgSrc = shop.imageUrl[0];
-                } else if (typeof shop.imageUrl === 'string' && shop.imageUrl !== "") {
-                    displayImgSrc = shop.imageUrl;
-                }
-
-                const imgHtml = displayImgSrc 
-                    ? `<img src="${displayImgSrc}" class="w-16 h-16 rounded-xl object-cover border border-slate-100 flex-shrink-0 bg-slate-50">`
-                    : `<div class="w-16 h-16 rounded-xl bg-slate-100 border border-slate-200/60 flex flex-col items-center justify-center text-slate-400 flex-shrink-0 text-lg shadow-sm"><i class="fa-solid fa-store"></i></div>`;
-
+                const coverImg = Array.isArray(shop.imageUrl) ? shop.imageUrl[0] : shop.imageUrl;
                 const card = document.createElement('div');
-                card.className = "bg-white p-4 rounded-2xl shadow-xs border border-slate-200/70 hover:border-amber-400 transition-all flex gap-3.5 items-center cursor-pointer relative group";
+                card.className = "bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 hover:shadow-md transition-all cursor-pointer flex gap-4 items-center";
                 card.onclick = () => openModal(shop.id);
+
                 card.innerHTML = `
-                    ${imgHtml}
-                    <div class="flex-grow min-w-0">
-                        <div class="flex items-center gap-1.5 flex-wrap">
-                            <h3 class="font-black text-slate-950 text-sm truncate group-hover:text-amber-600 transition-colors">${shop.name}</h3>
-                            ${shop.isRecommended ? '<span class="bg-amber-100 text-amber-600 font-bold text-[9px] px-1.5 py-0.5 rounded-md flex items-center gap-0.5"><i class="fa-solid fa-star text-[8px]"></i> แนะนำ</span>' : ''}
-                        </div>
-                        <p class="text-[11px] text-slate-500 font-medium mt-0.5"><i class="fa-solid fa-location-dot text-amber-500 mr-0.5"></i> โซน${shop.zoneName}</p>
-                        <p class="text-[11px] text-slate-400 truncate mt-1">${shop.price.replace(/\n/g, ' ')}</p>
+                    <div class="w-20 h-20 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0 relative">
+                        <img src="${coverImg}" alt="${shop.name}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+                        ${shop.isRecommended ? `<span class="absolute top-1 left-1 bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md"><i class="fa-solid fa-star"></i></span>` : ''}
                     </div>
-                    <div class="flex flex-col items-end gap-1 flex-shrink-0">
-                        <span class="text-right text-[10px] font-bold ${shop.isDelivery ? 'text-green-600 bg-green-50 px-2 py-0.5 rounded-full' : 'text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full'}">${shop.isDelivery ? '🚗 นอกสถานที่' : '🏪 เฉพาะหน้าร้าน'}</span>
-                        <i class="fa-solid fa-circle-chevron-right text-slate-300 text-base mt-2 group-hover:text-amber-500 transition-colors"></i>
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-center justify-between gap-1">
+                            <h3 class="font-extrabold text-slate-900 text-sm truncate">${shop.name}</h3>
+                            ${shop.isDelivery ? `<span class="text-[9px] bg-red-50 text-red-500 border border-red-200 font-bold px-1.5 py-0.5 rounded-full flex-shrink-0"><i class="fa-solid fa-truck-fast"></i> นอกสถานที่</span>` : ''}
+                        </div>
+                        <p class="text-[11px] text-amber-600 font-bold mt-0.5">📍 โซน ${shop.zoneName}</p>
+                        <p class="text-[11px] text-slate-500 mt-1 line-clamp-1"><i class="fa-regular fa-clock text-slate-400 mr-1"></i>${shop.time}</p>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        window.selectZone = function(zone) {
+        // ตัวกรองปุ่มต่าง ๆ
+        function selectZone(zone) {
             currentZone = zone;
             document.querySelectorAll('.zone-btn').forEach(btn => {
                 btn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg text-slate-600 cursor-pointer";
             });
-            const activeBtn = document.getElementById(`zone-${zone}`);
-            if(activeBtn) activeBtn.className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg bg-white text-slate-800 cursor-pointer shadow-sm";
+            document.getElementById(`zone-${zone}`).className = "zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg bg-white text-slate-800 shadow-xs cursor-pointer";
             renderShops();
         }
+        window.selectZone = selectZone;
 
-        function updateDeliveryButtonUI() {
-            const btn = document.getElementById('btn-delivery');
-            if(btn) {
-                btn.className = filterDelivery 
-                    ? "flex-1 bg-red-50 text-red-600 font-bold py-3.5 px-3 rounded-xl border border-red-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-                    : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
-            }
-        }
-
-        window.toggleDeliveryFilter = function() {
+        function toggleDeliveryFilter() {
             filterDelivery = !filterDelivery;
             updateDeliveryButtonUI();
             renderShops();
         }
+        window.toggleDeliveryFilter = toggleDeliveryFilter;
 
-        window.toggleRecommendedFilter = function() {
+        function updateDeliveryButtonUI() {
+            const btn = document.getElementById('btn-delivery');
+            btn.className = filterDelivery 
+                ? "flex-1 bg-red-500 text-white font-bold py-3.5 px-3 rounded-xl border border-red-500 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
+        }
+
+        function toggleRecommendedFilter() {
             filterRecommended = !filterRecommended;
             const btn = document.getElementById('btn-recommended');
-            if(btn) {
-                btn.className = filterRecommended 
-                    ? "flex-1 bg-amber-50 text-amber-600 font-bold py-3.5 px-3 rounded-xl border border-amber-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-                    : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
-            }
+            btn.className = filterRecommended 
+                ? "flex-1 bg-amber-500 text-white font-bold py-3.5 px-3 rounded-xl border border-amber-500 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                : "flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs";
             renderShops();
         }
+        window.toggleRecommendedFilter = toggleRecommendedFilter;
 
-        window.handleSearch = function() {
-            const searchInput = document.getElementById('search-input');
-            if(searchInput) {
-                searchQuery = searchInput.value.trim();
-                renderShops();
-            }
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value.trim();
+            renderShops();
         }
+        window.handleSearch = handleSearch;
 
+        // แสดง Modal รายละเอียดร้านค้า
         function openModal(shopId) {
+            activeShopId = shopId;
             const shop = shops.find(s => s.id === shopId);
             if (!shop) return;
 
-            activeShopId = shopId;
             document.getElementById('modal-shop-name').innerText = shop.name;
-            document.getElementById('modal-shop-zone').innerText = `📍 โซนพื้นที่: ${shop.zoneName}`;
+            document.getElementById('modal-shop-zone').innerText = `📍 โซน ${shop.zoneName}`;
             document.getElementById('modal-shop-time').innerText = shop.time;
-            document.getElementById('modal-shop-price').innerText = shop.price;
+            document.getElementById('modal-shop-price').innerText = shop.price || "ไม่มีข้อมูลราคาแจ้งไว้";
             document.getElementById('modal-shop-phone').innerText = shop.phone;
+            
             document.getElementById('modal-btn-call').href = `tel:${shop.phone}`;
             document.getElementById('modal-btn-maps').href = shop.mapsUrl;
 
-            currentImagesArray = [];
+            // จัดการสไลด์รูปภาพ
+            currentImagesArray = Array.isArray(shop.imageUrl) ? shop.imageUrl : [shop.imageUrl];
             currentImageIndex = 0;
-
-            if (Array.isArray(shop.imageUrl)) {
-                currentImagesArray = shop.imageUrl.filter(url => url !== "");
-            } else if (typeof shop.imageUrl === 'string' && shop.imageUrl !== "") {
-                currentImagesArray = [shop.imageUrl];
-            }
-
             updateModalImageDisplay();
 
-            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
-            const formContainer = document.getElementById('comment-form-container');
-            if (session.id === "admin") {
-                if(formContainer) formContainer.classList.add('hidden');
-            } else {
-                if(formContainer) formContainer.classList.remove('hidden');
-                updateIdentityPreview();
-            }
-
+            updateIdentityPreview();
             renderCommentsList();
 
-            const modal = document.getElementById('shop-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.classList.add('no-scroll');
+            document.getElementById('shop-modal').classList.remove('hidden');
+            document.getElementById('shop-modal').classList.add('flex');
         }
         window.openModal = openModal;
 
         function updateModalImageDisplay() {
-            const imgElement = document.getElementById('modal-shop-image');
-            const placeholderElement = document.getElementById('modal-shop-image-placeholder');
-            const prevBtn = document.getElementById('btn-prev-image');
-            const nextBtn = document.getElementById('btn-next-image');
+            const imgEl = document.getElementById('modal-shop-image');
+            const placeholderEl = document.getElementById('modal-shop-image-placeholder');
+            const btnPrev = document.getElementById('btn-prev-image');
+            const btnNext = document.getElementById('btn-next-image');
             const dotsContainer = document.getElementById('image-dots');
 
-            if(!dotsContainer) return;
-            dotsContainer.innerHTML = '';
-
-            if (currentImagesArray.length > 0) {
-                imgElement.src = currentImagesArray[currentImageIndex];
-                imgElement.classList.remove('hidden');
-                placeholderElement.classList.add('hidden');
+            if (currentImagesArray.length > 0 && currentImagesArray[0] !== "") {
+                imgEl.src = currentImagesArray[currentImageIndex];
+                imgEl.classList.remove('hidden');
+                placeholderEl.classList.add('hidden');
 
                 if (currentImagesArray.length > 1) {
-                    prevBtn.classList.remove('hidden');
-                    nextBtn.classList.remove('hidden');
+                    btnPrev.classList.remove('hidden');
+                    btnNext.classList.remove('hidden');
 
-                    for (let i = 0; i < currentImagesArray.length; i++) {
-                        const dot = document.createElement('div');
-                        dot.className = `w-1.5 h-1.5 rounded-full transition-all ${i === currentImageIndex ? 'bg-amber-500 scale-125 w-3' : 'bg-white/60'}`;
-                        dotsContainer.appendChild(dot);
-                    }
+                    dotsContainer.innerHTML = currentImagesArray.map((_, idx) => 
+                        `<span class="w-1.5 h-1.5 rounded-full ${idx === currentImageIndex ? 'bg-white' : 'bg-white/40'}"></span>`
+                    ).join('');
                 } else {
-                    prevBtn.classList.add('hidden');
-                    nextBtn.classList.add('hidden');
+                    btnPrev.classList.add('hidden');
+                    btnNext.classList.add('hidden');
+                    dotsContainer.innerHTML = '';
                 }
             } else {
-                imgElement.classList.add('hidden');
-                placeholderElement.classList.remove('hidden');
-                prevBtn.classList.add('hidden');
-                nextBtn.classList.add('hidden');
+                imgEl.classList.add('hidden');
+                placeholderEl.classList.remove('hidden');
+                btnPrev.classList.add('hidden');
+                btnNext.classList.add('hidden');
+                dotsContainer.innerHTML = '';
             }
         }
 
-        window.changeModalImage = function(direction) {
-            if (currentImagesArray.length <= 1) return;
-            
-            currentImageIndex += direction;
-            if (currentImageIndex >= currentImagesArray.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = currentImagesArray.length - 1;
-            }
+        function changeModalImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + currentImagesArray.length) % currentImagesArray.length;
             updateModalImageDisplay();
         }
+        window.changeModalImage = changeModalImage;
 
         function closeModal() {
+            activeShopId = null;
             document.getElementById('shop-modal').classList.add('hidden');
             document.getElementById('shop-modal').classList.remove('flex');
-            document.body.classList.remove('no-scroll');
-            document.getElementById('comment-textarea').value = '';
-            activeShopId = null;
         }
         window.closeModal = closeModal;
 
+        // จัดการเรื่องการแสดงผล Identity รหัสนักศึกษา
         function updateIdentityPreview() {
-            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
-            if(!session.id) return;
-            const radio = document.querySelector('input[name="id-display-mode"]:checked');
-            if(!radio) return;
-            const mode = radio.value;
-            const displayId = mode === 'masked' && session.id !== "00000000000" 
-                ? session.id.substring(0, 7) + "XXXX" 
-                : session.id;
-            const previewBox = document.getElementById('modal-user-identity');
-            if(previewBox) previewBox.innerText = displayId;
+            const cachedUser = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
+            const mode = document.querySelector('input[name="id-display-mode"]:checked').value;
+            const targetEl = document.getElementById('modal-user-identity');
+
+            if (!cachedUser.id) return;
+
+            if (mode === 'masked' && cachedUser.id.length === 11) {
+                targetEl.innerText = cachedUser.id.substring(0, 7) + 'XXXX';
+            } else {
+                targetEl.innerText = cachedUser.id;
+            }
         }
         window.updateIdentityPreview = updateIdentityPreview;
 
-        function submitComment() {
+        // บันทึกความคิดเห็น
+        async function submitComment() {
             const textarea = document.getElementById('comment-textarea');
-            const commentText = textarea.value.trim();
-            if(!commentText) return;
+            const text = textarea.value.trim();
+            if (!text) return alert("❌ กรุณากรอกข้อความก่อนส่งครับ");
 
-            const session = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
+            const cachedUser = JSON.parse(localStorage.getItem('ubu_repair_current_session') || '{}');
             const mode = document.querySelector('input[name="id-display-mode"]:checked').value;
-            
+
+            let displayId = cachedUser.id || "ไม่ระบุตัวตน";
+            if (mode === 'masked' && displayId.length === 11) {
+                displayId = displayId.substring(0, 7) + 'XXXX';
+            }
+
             const commentObj = {
-                text: commentText,
-                studentId: mode === 'masked' && session.id !== "00000000000" ? session.id.substring(0, 7) + "XXXX" : session.id,
-                userType: session.type,
-                timestamp: new Date().toLocaleString('th-TH', { hour12: false })
+                userDisplay: displayId,
+                realName: cachedUser.name || "ผู้ใช้งาน",
+                realId: cachedUser.id || "-",
+                text: text,
+                createdAt: new Date().toLocaleString('th-TH')
             };
 
-            const commentRef = ref(db, `comments/${activeShopId}`);
-            push(commentRef, commentObj);
+            const shopCommentsRef = push(ref(db, `comments/${activeShopId}`));
+            await set(shopCommentsRef, commentObj);
+
             textarea.value = '';
+            renderCommentsList();
         }
         window.submitComment = submitComment;
 
+        // แสดงรายการคอมเมนต์ของร้านนั้นๆ
         function renderCommentsList() {
             const listContainer = document.getElementById('modal-comments-list');
-            if(!listContainer) return;
             listContainer.innerHTML = '';
-            const shopComments = commentsData[activeShopId];
 
-            if(!shopComments) {
-                listContainer.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">ยังไม่มีรีวิวสำหรับร้านนี้ มาร่วมแชร์ประสบการณ์คนแรกกันเลย!</p>`;
+            const shopComments = commentsData[activeShopId] ? Object.values(commentsData[activeShopId]) : [];
+
+            if (shopComments.length === 0) {
+                listContainer.innerHTML = `<p class="text-[11px] text-slate-400 italic text-center py-2">ยังไม่มีความคิดเห็น มาเป็นคนแรกที่รีวิวกัน!</p>`;
                 return;
             }
 
-            Object.values(shopComments).reverse().forEach(comment => {
+            shopComments.reverse().forEach(c => {
                 const item = document.createElement('div');
-                item.className = "bg-white p-3 rounded-xl border border-slate-200/60 shadow-2xs space-y-1 text-xs";
+                item.className = "bg-white p-3 rounded-xl border border-slate-200/70 text-xs shadow-2xs";
                 item.innerHTML = `
-                    <div class="flex justify-between items-center text-[10px]">
-                        <span class="font-bold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded-sm"><i class="fa-solid fa-id-card-alt mr-0.5 text-slate-400"></i> ${comment.studentId}</span>
-                        <span class="text-slate-400 font-medium">${comment.timestamp.split(' ')[0]}</span>
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md text-[10px]"><i class="fa-solid fa-user-graduate mr-1"></i>${c.userDisplay}</span>
+                        <span class="text-[9px] text-slate-400">${c.createdAt}</span>
                     </div>
-                    <p class="text-slate-800 pt-0.5 font-medium leading-relaxed">${comment.text}</p>
+                    <p class="text-slate-700 leading-relaxed mt-1">${c.text}</p>
                 `;
                 listContainer.appendChild(item);
             });
         }
 
+        // แสดงผลหน้า แดชบอร์ดผู้ดูแลระบบ
         function renderAdminDashboard() {
-            const totalUsersBox = document.getElementById('admin-total-users');
-            if(totalUsersBox) totalUsersBox.innerText = usersData.length;
-            
-            let totalComments = 0;
-            const adminCommentsContainer = document.getElementById('admin-comments-container');
-            if(adminCommentsContainer) adminCommentsContainer.innerHTML = '';
+            document.getElementById('admin-total-users').innerText = usersData.length;
+
+            let totalCommentsCount = 0;
+            const commentsContainer = document.getElementById('admin-comments-container');
+            commentsContainer.innerHTML = '';
 
             Object.keys(commentsData).forEach(shopId => {
-                const shop = shops.find(s => s.id == shopId);
-                const list = commentsData[shopId];
-                if(list && adminCommentsContainer) {
-                    const arr = Object.values(list);
-                    totalComments += arr.length;
-                    
-                    arr.forEach(comment => {
-                        const row = document.createElement('div');
-                        row.className = "bg-slate-900 border border-slate-800 p-3 rounded-xl space-y-1 text-xs";
-                        row.innerHTML = `
-                            <div class="flex justify-between text-[10px] text-slate-400 font-bold">
-                                <span class="text-amber-400"><i class="fa-solid fa-store mr-0.5"></i> ${shop ? shop.name.split(' ')[0] : 'ร้านค้า'}</span>
-                                <span>รหัส: ${comment.studentId}</span>
-                            </div>
-                            <p class="text-slate-200 font-medium">${comment.text}</p>
-                            <div class="text-[9px] text-right text-slate-500">${comment.timestamp}</div>
-                        `;
-                        adminCommentsContainer.appendChild(row);
-                    });
-                }
+                const list = Object.values(commentsData[shopId]);
+                totalCommentsCount += list.length;
+
+                const shopInfo = shops.find(s => s.id == shopId);
+                const shopName = shopInfo ? shopInfo.name : `ร้านรหัส ${shopId}`;
+
+                list.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs";
+                    card.innerHTML = `
+                        <div class="flex justify-between text-[10px] text-slate-400 mb-1">
+                            <span class="text-amber-400 font-bold">📍 ${shopName}</span>
+                            <span>${c.createdAt}</span>
+                        </div>
+                        <div class="text-slate-200 font-medium mb-1">"${c.text}"</div>
+                        <div class="text-[10px] text-slate-500">โดย: <span class="text-slate-300 font-bold">${c.realName}</span> (ID: ${c.realId})</div>
+                    `;
+                    commentsContainer.appendChild(card);
+                });
             });
 
-            const totalCommentsBox = document.getElementById('admin-total-comments');
-            if(totalCommentsBox) totalCommentsBox.innerText = totalComments;
+            document.getElementById('admin-total-comments').innerText = totalCommentsCount;
 
-            const tableBody = document.getElementById('admin-users-table');
-            if(!tableBody) return;
-            tableBody.innerHTML = '';
-            
-            [...usersData].reverse().forEach(user => {
+            // ตารางผู้ใช้งาน
+            const usersTable = document.getElementById('admin-users-table');
+            usersTable.innerHTML = '';
+
+            usersData.reverse().forEach(u => {
                 const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-900 hover:bg-slate-900/40 transition-colors";
+                tr.className = "border-b border-slate-900/50 hover:bg-slate-900/40";
                 tr.innerHTML = `
-                    <td class="p-2.5 font-bold text-slate-200">${user.name}</td>
-                    <td class="p-2.5 font-mono tracking-wider">${user.id}</td>
-                    <td class="p-2.5"><span class="px-2 py-0.5 rounded-sm font-bold text-[10px] ${user.id === '00000000000' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-slate-800 text-amber-400'}">${user.type}</span></td>
+                    <td class="p-2.5 font-bold text-slate-200">${u.name}</td>
+                    <td class="p-2.5 font-mono text-amber-400">${u.id}</td>
+                    <td class="p-2.5 text-slate-400">${u.type || 'นักศึกษา'}</td>
                 `;
-                tableBody.appendChild(tr);
+                usersTable.appendChild(tr);
             });
         }
     </script>
