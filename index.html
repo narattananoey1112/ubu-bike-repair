@@ -115,7 +115,7 @@
         <header class="bg-amber-500 text-white py-5 px-4 shadow-md sticky top-0 z-30">
             <div class="max-w-md mx-auto flex justify-between items-center">
                 <div>
-                    <h1 class="text-xl font-black flex items-center gap-2"><span>🛠️ UBU Bike Motorcyle Platform</span></h1>
+                    <h1 class="text-xl font-black flex items-center gap-2"><span>🛠️ UBU  Motorcyle Platform</span></h1>
                     <p class="text-[10px] opacity-90 mt-0.5">รวมจุดบริการช่างรอบมหาวิทยาลัยอุบลฯ</p>
                 </div>
                 <div class="flex items-center gap-1.5">
@@ -151,7 +151,7 @@
     <!-- เนื้อหาข้อความทั้งหมด (ตัวหนังสือสีขาว) -->
     <div style="font-size: 14px; color: #ffffff; line-height: 1.5; font-weight: 300;">
         <p style="margin-bottom: 10px;">
-            เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นส่วนหนึ่งของโครงการพัฒนาแพลตฟอร์มรวบรวมข้อมูลร้านซ่อมรถจักรยานยนต์รอบมหาวิทยาลัยอุบลราชธานี โดยมีวัตถุประสงค์เพื่ออำนวยความสะดวกในการค้นหาข้อมูลร้านซ่อมและใช้เป็นข้อมูลประกอบการตัดสินใจของผู้ใช้งาน เว็บไซต์ไม่มีส่วนได้ส่วนเสียกับร้านซ่อมใดเป็นพิเศษ และนำเสนอข้อมูลอย่างเป็นกลาง
+            เว็บไซต์นี้จัดทำขึ้นโดยนักศึกษาสาขานวัตกรรมการพัฒนาสังคม มหาวิทยาลัยอุบลราชธานี เพื่อเป็นส่วนหนึ่งของโครงการพัฒนาแพลตฟอร์มรวบรวมข้อมูลร้านซ่อมรถจักรยานยนต์รอบมหาวิทยาลัยอุบลราชธานี มีวัตถุประสงค์เพื่ออำนวยความสะดวกในการค้นหาข้อมูลร้านซ่อมและใช้ประกอบการตัดสินใจของผู้ใช้งาน โดยเว็บไซต์ไม่มีส่วนได้ส่วนเสียกับร้านซ่อมใดเป็นพิเศษ และนำเสนอข้อมูลอย่างเป็นกลาง
         </p>
         
         <!-- กรอบย่อยเน้นข้อความเรื่องราคา พร้อมจุดกระพริบเตือน -->
@@ -165,7 +165,7 @@
         <main class="max-w-md mx-auto p-4 pb-20">
             <div class="relative mb-5">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"><i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i></span>
-                <input type="text" id="search-input" oninput="window.handleSearch()" placeholder="ค้นหาร้าน, ปะยาง, น้ำมันเครื่อง..." class="w-full text-sm pl-10 pr-4 py-3.5 bg-white border border-slate-200 rounded-xl shadow-sm focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none">
+                <input type="text" id="search-input" oninput="window.handleSearch()" placeholder="ค้นหาร้านซ่อมมอเตอร์ไซค์" class="w-full text-sm pl-10 pr-4 py-3.5 bg-white border border-slate-200 rounded-xl shadow-sm focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none">
             </div>
 
             <div class="flex gap-2.5 mb-5">
@@ -175,6 +175,9 @@
                 <button id="btn-recommended" onclick="window.toggleRecommendedFilter()" class="flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
                     <i class="fa-solid fa-star text-amber-500"></i> ร้านแนะนำ
                 </button>
+                <button onclick="window.toggleKnowledgeSection()" class="flex-1 bg-white text-slate-700 font-bold py-3.5 px-3 rounded-xl border border-slate-200 text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
+    <i class="fa-solid fa-book-open text-orange-500"></i> คู่มือความรู้
+</button>
             </div>
 
             <h2 class="text-xs font-bold text-slate-500 tracking-wider uppercase mb-2 px-1">📍 เลือกโซนพื้นที่ใกล้ตัว</h2>
@@ -185,13 +188,28 @@
                 <button onclick="window.selectZone('market')" id="zone-market" class="zone-btn flex-1 py-2.5 text-xs font-bold rounded-lg text-slate-600 cursor-pointer">ตลาดบังเอิญ</button>
             </div>
 
-            <div class="flex justify-between items-center mb-4 px-1">
+          <div class="flex justify-between items-center mb-4 px-1">
                 <h2 class="text-base font-extrabold text-slate-900">🛠️ รายชื่อร้านค้าที่เปิดบริการ</h2>
                 <span id="shop-count" class="text-xs font-bold text-slate-500 bg-slate-200 px-2.5 py-0.5 rounded-full">0 ร้าน</span>
             </div>
             <div id="shop-container" class="space-y-4"></div>
         </main>
-    </div>
+
+        <!-- 📍 นำกล่องความรู้นี้มาวางไว้ตรงนี้ (อยู่ข้างในหน้าแอปหลัก) -->
+        <div id="knowledge-section" class="hidden max-w-md mx-auto p-4 mb-20 space-y-4 animate-in fade-in duration-200">
+            <div class="flex items-center justify-between px-2 bg-white py-3 px-4 rounded-2xl border border-slate-200 shadow-sm sticky top-16 z-20">
+                <h2 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-xl bg-orange-500 text-white flex items-center justify-center text-xs shadow-xs">📖</span> 
+                    คู่มือดูแลรถฉบับสมบูรณ์
+                </h2>
+                <button onclick="window.toggleKnowledgeSection()" class="text-xs font-bold text-slate-600 hover:text-red-500 bg-slate-100 px-3 py-1.5 rounded-xl cursor-pointer flex items-center gap-1 transition-colors">
+                    <i class="fa-solid fa-xmark"></i> ปิดคู่มือ
+                </button>
+            </div>
+            <div class="space-y-3" id="knowledge-list-container"></div>
+        </div>
+
+    </div> <!-- ปิด div ของ id="page-app" ตรงนี้ -->
 
 
     <!-- =================================================== -->
@@ -298,7 +316,7 @@
                     <a id="modal-btn-maps" href="#" target="_blank" class="text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5"><i class="fa-solid fa-location-dot text-red-500"></i> ดูแผนที่นำทาง</a>
                 </div>
 
-                <hr class="border-slate-200 my-2">
+               <hr class="border-slate-200 my-2">
 
                 <div>
                     <h4 class="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1 uppercase tracking-wider">💬 รีวิวและความคิดเห็นจากนักศึกษา</h4>
@@ -325,7 +343,26 @@
                 </div>
             </div>
         </div>
+    </div> <!-- ปิด modal ร้านค้า -->
+</div>     <!-- ปิดหน้า page-app -->
+
+
+<!-- ======================================================= -->
+<!-- 📍 นำกล่อง "คู่มือความรู้" มาวางไว้ตรงนี้ (อยู่นอกหน้าแอปหลัก แต่ก่อนถึงสคริปต์) -->
+<!-- ======================================================= -->
+<div id="knowledge-section" class="hidden max-w-md mx-auto p-4 mb-10 space-y-4">
+    <div class="flex items-center justify-between px-1 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+        <h2 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-orange-500 text-white flex items-center justify-center text-xs shadow-xs">📖</span> 
+            คู่มือดูแลรถฉบับสมบูรณ์
+        </h2>
+        <button onclick="window.toggleKnowledgeSection()" class="text-xs font-bold text-slate-500 hover:text-slate-800 bg-slate-100 px-3 py-1.5 rounded-lg cursor-pointer">
+            ✕ ปิดคู่มือ
+        </button>
     </div>
+    <!-- รายการเนื้อหาที่จะถูกเรนเดอร์มาแสดง -->
+    <div class="space-y-3" id="knowledge-list-container"></div>
+</div>
 
 
     <!-- =================================================== -->
@@ -356,7 +393,7 @@
                 zone: "market", 
                 zoneName: "ตลาดบังเอิญ", 
                 time: "10.00-21.00 น. (หยุดวันอาทิตย์)", 
-                price: "เปลี่ยนยางใน เริ่มต้น100-130 / เปลี่ยนน้ำมันเครื่อง 140-150/ เปลี่ยนผ้าเบรค 350-950 / เปลี่ยนแบตเตอรี่ 350-400", 
+                price: "\nเปลี่ยนยางใน เริ่มต้น100-130 \n เปลี่ยนน้ำมันเครื่องเริ่มต้น 140-150\n เปลี่ยนผ้าเบรคเริ่มต้น 350-950 \n เปลี่ยนแบตเตอรี่เริ่มต้น 350-400", 
                 phone: "0658756282", 
                 mapsUrl: "https://maps.app.goo.gl/TeoTBzh6vRNco5dRA", 
                 isDelivery: true, 
@@ -382,7 +419,7 @@
                 zone: "health10", 
                 zoneName: "อนามัย 10", 
                 time: "เปิดทุกวัน 09:00 - 24:00 น. (ยกเว้นวันอาทิตย์เปิดช่วงบ่าย)", 
-                price: "• เปลี่ยนยางใน: 120 - 160.-\n• เปลี่ยนน้ำมันเครื่อง: 120 - 140.- (เกรดดี 300.-)\n• เปลี่ยนผ้าเบรค: 80 / 100 / 150.-\n• เปลี่ยนแบตเตอรี่: 350 - 650.-\n*มีบริการยกรถมาซ่อมที่ร้านให้ได้*", 
+                price: "\nเปลี่ยนยางใน เริ่มต้น 120 - 160.-\n เปลี่ยนน้ำมันเครื่อง เริ่มต้น 120 - 140.- (เกรดดี 300.-)\n เปลี่ยนผ้าเบรค เริ่มต้น 80 / 100 / 150.-\n เปลี่ยนแบตเตอรี่ เริ่มต้น 350 - 650", 
                 phone: "088-755-3019", 
                 mapsUrl: "https://www.google.com/maps/search/?api=1&query=15.130584,104.896866", 
                 isDelivery: true, 
@@ -398,7 +435,7 @@
                 zone: "gate3", 
                 zoneName: "ประตู3", 
                 time: "07.00-19.00 น. (เปิดทุกวัน)", 
-                price: "เปลี่ยนยางใน 120 /เปลี่ยนน้ำมันเครื่อง 120-150 / เปลี่ยนผ้าเบรค 80เบครหน้า  120เบครหลัง  / เปลี่ยนแบต350-500", 
+                price: "\nเปลี่ยนยางใน เริ่มต้น 120 \n เปลี่ยนน้ำมันเครื่อง เริ่มต้น 120-150 \n เปลี่ยนผ้าเบรค เริ่มต้น 80เบรคหน้า  120เบรคหลัง  \n เปลี่ยนแบต เริ่มต้น 350-500", 
                 phone: "084-936-8139", 
                 mapsUrl: "https://maps.app.goo.gl/eF8ZsmF77QourS9YA", 
                 isDelivery: false, 
@@ -442,7 +479,7 @@
                 mapsUrl: "https://maps.app.goo.gl/MEKSTPqYn3Q14SuW7", 
                 isDelivery: true, 
                 isRecommended: false, 
-                imageUrl: ["https://lh3.googleusercontent.com/d/16bPQFpG3Eh9KIaTQ2MzgZ2b-JNSHe_hu"] 
+                imageUrl: ["https://lh3.googleusercontent.com/d/19I75NHdLDG__QM6ikcRYySECr_e6YFAe"] 
             },
             {
         id: 8,
@@ -463,7 +500,7 @@
         zone: "gate3",
         zoneName: "ประตู3",
         time: "10.00-20.00 น.",
-        price: "เปลี่ยนยางใน 120 / เปลี่ยนน้ำมันเครื่อง 100-300 / เปลี่ยนผ้าเบรค 80เบรคหน้า  100-120-160/ เปลี่ยนแบต350-550",
+        price: "\nเปลี่ยนยางใน เริ่มต้น 120 \n เปลี่ยนน้ำมันเครื่อง เริ่มต้น 100-300 \n เปลี่ยนผ้าเบรค เริ่มต้น 80เบรคหน้า  100-120-160\n เปลี่ยนแบต เริ่มต้น 350-550",
         phone: "0982500625",
         mapsUrl: "https://maps.app.goo.gl/uUZji4uiS15BwyJ8A",
         isDelivery: false,
@@ -476,7 +513,7 @@
         zone: "market",
         zoneName: "ตลาดบังเอิญ",
         time: "08.30-17.30 น.",
-        price: "เปลี่ยนยางใน 120-140 / เปลี่ยนน้ำมันเครื่อง 120-200 / เปลี่ยนผ้าเบรค 90-200 / เปลี่ยนแบต350-900(เเท้)",
+        price: "\nเปลี่ยนยางใน เริ่มต้น 120-140 \n เปลี่ยนน้ำมันเครื่อง เริ่มต้น 120-200 \n เปลี่ยนผ้าเบรค เริ่มต้น 90-200 \n เปลี่ยนแบต เริ่มต้น 350-900(เเท้)",
         phone: "0990725688",
         mapsUrl: "https://maps.app.goo.gl/7nbNytWmh9ASEXEP7",
         isDelivery: false,
@@ -959,6 +996,158 @@
                 usersTable.appendChild(tr);
             });
         }
+      // ข้อมูลความรู้เบื้องต้นและเกร็ดความรู้สำคัญ
+        const knowledgeData = [
+            {
+                title: "น้ำมันเครื่อง",
+                category: "ระบบเครื่องยนต์",
+                categoryBadge: "bg-orange-50 text-orange-600 border-orange-200/60",
+                description: "ช่วยหล่อลื่นชิ้นส่วนภายใน ลดการเสียดสี และระบายความร้อนของเครื่องยนต์ไม่ให้พังไว",
+                advice: "ตรวจเช็กระดับน้ำมันเครื่องทุกสัปดาห์ และเปลี่ยนถ่ายทุกๆ 1,000 - 2,000 กิโลเมตรตามคู่มือ",
+                icon: "🛢️",
+                gradient: "from-orange-500 to-amber-500"
+            },
+            {
+                title: "ยางและแรงดันลมยาง",
+                category: "ความปลอดภัย",
+                categoryBadge: "bg-red-50 text-red-600 border-red-200/60",
+                description: "ลมยางที่เหมาะสมช่วยให้ทรงตัวดี ประหยัดน้ำมัน และลดความเสี่ยงยางแตกเวลารถวิ่งเร็ว",
+                advice: "ตรวจเช็กแรงดันลมยางอย่างน้อยสัปดาห์ละ 1 ครั้ง และเช็กดอกยางไม่ให้โล้นเตียน",
+                icon: "🛞",
+                gradient: "from-red-500 to-rose-500"
+            },
+            {
+                title: "ระบบเบรก (ผ้าเบรก & น้ำมันเบรก)",
+                category: "ความปลอดภัยสูงสุด",
+                categoryBadge: "bg-rose-50 text-rose-600 border-rose-200/60",
+                description: "หัวใจสำคัญในการหยุดรถ หากผ้าเบรกบางเกินไปหรือน้ำมันเบรกรั่ว จะทำให้ระยะเบรกยาวขึ้น",
+                advice: "สังเกตเสียงเวลาบีบเบรก ถ้ามีเสียงดังเอี๊ยดหรือเบรกลึกกว่าปกติ ให้รีบเปลี่ยนทันที",
+                icon: "🛑",
+                gradient: "from-rose-600 to-red-600"
+            },
+            {
+                title: "โซ่และสเตอร์",
+                category: "ระบบขับเคลื่อน",
+                categoryBadge: "bg-amber-50 text-amber-700 border-amber-200/60",
+                description: "ส่งกำลังจากเครื่องยนต์ไปยังล้อหลัง หากโซ่แห้งหรือหย่อนเกินไปจะทำให้กระชากและขาดกลางทาง",
+                advice: "หยอดน้ำมันหล่อลื่นโซ่ทุก 500 กม. และตั้งความตึงของโซให้อยู่ในระยะที่พอดี",
+                icon: "⛓️",
+                gradient: "from-amber-500 to-yellow-500"
+            },
+            {
+                title: "แบตเตอรี่และระบบไฟ",
+                category: "ระบบไฟฟ้า",
+                categoryBadge: "bg-orange-50 text-orange-700 border-orange-200/60",
+                description: "จ่ายไฟให้ระบบสตาร์ท ไฟหน้า ไฟเลี้ยว และแตร ถ้าแบตเสื่อมรถจะสตาร์ทมือไม่ติด",
+                advice: "หากกดปุ่มสตาร์ทแล้วมีเสียงแชะๆ หรือไฟหน้ารถเริ่มหรี่ ควรนำไปให้ร้านเช็กไฟชาร์จ",
+                icon: "⚡",
+                gradient: "from-amber-600 to-orange-600"
+            },
+            {
+                title: "ไส้กรองอากาศ",
+                category: "เครื่องยนต์",
+                categoryBadge: "bg-amber-50 text-amber-600 border-amber-200/60",
+                description: "ทำหน้าที่ดักฝุ่นละอองไม่ให้เข้าไปในห้องเผาไหม้ ช่วยให้เครื่องยนต์เดินเรียบและประหยัดน้ำมัน",
+                advice: "ควรเปิดฝาครอบมาเป่าทำความสะอาดฝุ่นทุกๆ 3,000 กม. และเปลี่ยนใหม่เมื่อดำสกปรกมาก",
+                icon: "💨",
+                gradient: "from-orange-400 to-amber-600"
+            },
+            {
+                title: "หัวเทียนและการจุดระเบิด",
+                category: "เครื่องยนต์",
+                categoryBadge: "bg-yellow-50 text-yellow-700 border-yellow-200/60",
+                description: "ทำหน้าที่จุดประกายไฟในห้องเผาไหม้ หากหัวเทียนบอดหรือเสื่อมสภาพ รถจะมีอาการกระตุก สตาร์ทติดยาก หรือกินน้ำมัน",
+                advice: "ควรตรวจสอบเขี้ยวหัวเทียนและทำความสะอาดทุกๆ 8,000 - 10,000 กิโลเมตร หรือเปลี่ยนใหม่ตามระยะ",
+                icon: "🔥",
+                gradient: "from-yellow-500 to-amber-500"
+            },
+            {
+                title: "น้ำยาหล่อเย็น (หม้อน้ำ)",
+                category: "ระบบระบายความร้อน",
+                categoryBadge: "bg-blue-50 text-blue-700 border-blue-200/60",
+                description: "สำหรับรถที่มีระบบหม้อน้ำ น้ำยาทำหน้าที่ระบายความร้อนไม่ให้เครื่องยนต์น็อคหรือฮีทพังกลางทาง",
+                advice: "หมั่นตรวจเช็กระดับน้ำยาในถังพักให้อยู่ในระดับ Standard เสมอ และเปลี่ยนถ่ายตามกำหนด",
+                icon: "❄️",
+                gradient: "from-blue-500 to-cyan-500"
+            },
+            {
+                title: "การตรวจเช็กเบื้องต้นก่อนเดินทางไกล",
+                category: "ความปลอดภัยทั่วไป",
+                categoryBadge: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
+                description: "เช็กลิสต์สำคัญก่อนขับขี่ออกนอกพื้นที่ เช่น รอบมหาวิทยาลัย เพื่อความปลอดภัยสูงสุด",
+                advice: "เช็ก 5 จุดหลัก: ลมยาง, เบรก, ระบบไฟ/ไฟเลี้ยว, ระดับน้ำมันเครื่อง และโซ่/สายพานทุกครั้ง",
+                icon: "✅",
+                gradient: "from-emerald-500 to-teal-500"
+            }
+        ];
+
+        // ฟังก์ชันสร้างการ์ดความรู้
+        function renderKnowledge() {
+            const container = document.getElementById('knowledge-list-container');
+            if (!container) return;
+
+            let html = '';
+            knowledgeData.forEach(item => {
+                html += `
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                        <div class="p-4 space-y-2.5">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-xl shadow-inner border border-slate-200/50">
+                                        ${item.icon}
+                                    </div>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-sm">${item.title}</h3>
+                                        <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold border mt-0.5 ${item.categoryBadge}">${item.category}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-medium">${item.description}</p>
+                            <div class="text-xs text-slate-700 bg-amber-50/60 p-2.5 rounded-xl border border-amber-200/40 flex items-start gap-2">
+                                <span class="text-amber-600 font-bold shrink-0">💡 คำแนะนำ:</span>
+                                <span class="leading-relaxed font-normal">${item.advice}</span>
+                            </div>
+                        </div>
+                        <div class="h-1 w-full bg-gradient-to-r ${item.gradient}"></div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ฟังก์ชันกดเปิด-ปิดกล่องคู่มือความรู้บนหน้าหลักทันที
+      window.toggleKnowledgeSection = function() {
+            const section = document.getElementById('knowledge-section');
+            // ค้นหาองค์ประกอบอื่นๆ ในหน้าหลัก รวมถึงกล่องแจ้งเตือนด้านบน
+            const mainContentElements = document.querySelectorAll('#page-app > main > *:not(#knowledge-section)');
+            
+            // ค้นหากล่องข้อความแจ้งเตือนสีน้ำตาลเข้มด้านบน (ถ้ามีคลาสหรือโครงสร้างนี้)
+            const warningBox = document.querySelector('#page-app > div[style*="background"]');
+
+            if (section) {
+                section.classList.toggle('hidden');
+                
+                // ควบคุมการซ่อน/แสดงเนื้อหาหน้าหลักและกล่องแจ้งเตือน
+                const isHidden = section.classList.contains('hidden');
+                
+                if (warningBox) {
+                    warningBox.classList.toggle('hidden', !isHidden);
+                }
+
+                mainContentElements.forEach(el => {
+                    if (isHidden) {
+                        el.classList.remove('hidden'); // แสดงหน้าหลักกลับมา
+                    } else {
+                        el.classList.add('hidden');    // ซ่อนอย่างอื่นชั่วคราว
+                    }
+                });
+
+                if (!isHidden) {
+                    renderKnowledge();
+                    window.scrollTo(0, 0);
+                }
+            }
+        };
     </script>
 </body>
 </html>
