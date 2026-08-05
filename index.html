@@ -529,20 +529,23 @@
         <!-- 🌟 โค้ดกล่องลอยรีวิวและ Modal (แสดงเฉพาะในหน้าหลักหลังล็อกอิน) -->
         <!-- ================================================================= -->
        <!-- 🌟 ปรับตำแหน่งเป็น bottom-6 (อยู่ชิดขวาล่าง และเอา top-1/3 ออก) -->
-<div id="review-widget-container" class="hidden fixed right-4 bottom-6 z-40 max-w-xs transition-all duration-300">
-    <div id="review-bubble" class="bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-orange-200 space-y-3 relative group">
-        <button onclick="window.closeReviewPermanently()" class="absolute -top-2 -left-2 bg-slate-200 hover:bg-red-500 hover:text-white text-slate-600 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center transition-all shadow-sm cursor-pointer" title="ปิดและไม่แสดงอีก">✕</button>
+<div id="review-widget-container" class="hidden fixed right-4 bottom-6 z-40 max-w-[240px] transition-all duration-300">
+    <!-- 🌟 ใช้ bg-transparent ให้พื้นหลังใสสนิท และเพิ่ม border สีขาวหรือสีส้มจางๆ เป็นเส้นกรอบ -->
+    <div id="review-bubble" class="bg-transparent p-3 rounded-xl shadow-lg border border-orange-300/60 space-y-2 relative group">
+        
+        <!-- ปุ่มปิด -->
+        <button onclick="window.closeReviewPermanently()" class="absolute -top-2 -left-2 bg-slate-200/90 hover:bg-red-500 hover:text-white text-slate-600 w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center transition-all shadow-sm cursor-pointer" title="ปิดและไม่แสดงอีก">✕</button>
 
-        <div class="flex items-start gap-2.5">
-            <span class="text-2xl animate-bounce">🙋‍♂️</span>
+        <div class="flex items-center gap-2">
+            <span class="text-xl animate-bounce">🙋‍♂️</span>
             <div>
-                <h4 class="font-black text-slate-900 text-xs">ช่วยประเมินเว็บไซต์ให้หน่อยนะคะ!</h4>
-                <p class="text-[11px] text-slate-500 leading-tight mt-0.5">ติชมหรือให้คะแนนเพื่อช่วยพัฒนาเว็บไซต์ได้ค่ะ✨</p>
+                <h4 class="font-black text-slate-900 text-[11px] leading-tight drop-shadow-xs">ช่วยประเมินเว็บให้หน่อยนะคับ!</h4>
+                <p class="text-[10px] text-slate-700 leading-tight mt-0.5 drop-shadow-xs">ติชมเพื่อช่วยพัฒนาโปรเจกต์ ✨</p>
             </div>
         </div>
 
-        <button onclick="window.openReviewModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-2 px-3 rounded-xl text-xs transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
-            <span>⭐ เขียนรีวิว / ดูความเห็นอื่นๆ</span>
+        <button onclick="window.openReviewModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-1.5 px-2 rounded-lg text-[11px] transition-all shadow-sm flex items-center justify-center gap-1 cursor-pointer">
+            <span>⭐ เขียนรีวิว / ดูความเห็น</span>
         </button>
     </div>
 </div>
