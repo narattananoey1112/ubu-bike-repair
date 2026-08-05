@@ -17,7 +17,7 @@
     <!-- =================================================== -->
     <!-- หน้าที่ 1: ประตูทางเข้าก่อนเข้าใช้งาน (Gate Page) -->
     <!-- =================================================== -->
-    < <div id="page-gate" class="page-transition min-height-screen flex items-center justify-center p-4 min-h-screen bg-slate-900">
+     <div id="page-gate" class="page-transition min-height-screen flex items-center justify-center p-4 min-h-screen bg-slate-900">
 
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-500/20 via-transparent to-transparent pointer-events-none"></div>
 
@@ -237,7 +237,7 @@
 
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: repeating-linear-gradient(45deg, #ff4d4d, #ff4d4d 12px, #1a1a1a 12px, #1a1a1a 24px);"></div>
 
-   
+
 
     <!-- CSS สำหรับทำให้กระพริบ -->
 
@@ -525,7 +525,78 @@
 </div> <!-- บรรทัดปิด div ของ id="page-app" ตรงนี้ -->
 </div> <!-- ปิด div ของ id="page-app" ตรงนี้ -->
 
+<!-- ================================================================= -->
+        <!-- 🌟 โค้ดกล่องลอยรีวิวและ Modal (แสดงเฉพาะในหน้าหลักหลังล็อกอิน) -->
+        <!-- ================================================================= -->
+       <!-- 🌟 ปรับตำแหน่งเป็น bottom-6 (อยู่ชิดขวาล่าง และเอา top-1/3 ออก) -->
+<div id="review-widget-container" class="hidden fixed right-4 bottom-6 z-40 max-w-xs transition-all duration-300">
+    <div id="review-bubble" class="bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-orange-200 space-y-3 relative group">
+        <button onclick="window.closeReviewPermanently()" class="absolute -top-2 -left-2 bg-slate-200 hover:bg-red-500 hover:text-white text-slate-600 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center transition-all shadow-sm cursor-pointer" title="ปิดและไม่แสดงอีก">✕</button>
 
+        <div class="flex items-start gap-2.5">
+            <span class="text-2xl animate-bounce">🙋‍♂️</span>
+            <div>
+                <h4 class="font-black text-slate-900 text-xs">ช่วยประเมินเว็บไซต์ให้หน่อยนะคะ!</h4>
+                <p class="text-[11px] text-slate-500 leading-tight mt-0.5">ติชมหรือให้คะแนนเพื่อช่วยพัฒนาเว็บไซต์ได้ค่ะ✨</p>
+            </div>
+        </div>
+
+        <button onclick="window.openReviewModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-2 px-3 rounded-xl text-xs transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>⭐ เขียนรีวิว / ดูความเห็นอื่นๆ</span>
+        </button>
+    </div>
+</div>
+
+        <!-- หน้าต่าง Modal สำหรับฟอร์มรีวิวและรายการรีวิว Firebase -->
+        <div id="review-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-100 overflow-hidden relative">
+                <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">⭐</span>
+                        <h3 class="font-black text-slate-900 text-sm">ระบบประเมินและรีวิวเว็บไซต์โปรเจกต์</h3>
+                    </div>
+                    <button onclick="window.closeReviewModal()" class="text-slate-400 hover:text-slate-600 text-sm font-bold w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center cursor-pointer">✕</button>
+                </div>
+
+                <div class="p-5 overflow-y-auto space-y-5">
+                    <form onsubmit="window.submitReviewToFirebase(event)" class="space-y-3 bg-orange-50/40 p-4 rounded-xl border border-orange-100">
+                        <h4 class="font-bold text-xs text-orange-900">✍️ ส่งความคิดเห็นของคุณ</h4>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ชื่อผู้รีวิว / คณะ</label>
+                            <input type="text" id="rev-name" placeholder="ระบุชื่อของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ให้คะแนนความพึงพอใจ</label>
+                            <select id="rev-rating" class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 font-bold text-amber-600">
+                                <option value="5">⭐⭐⭐⭐⭐ (5 ดาว - ยอดเยี่ยมมาก)</option>
+                                <option value="4">⭐⭐⭐⭐ (4 ดาว - ดีมาก)</option>
+                                <option value="3">⭐⭐⭐ (3 ดาว - ปานกลาง)</option>
+                                <option value="2">⭐⭐ (2 ดาว - พอใช้)</option>
+                                <option value="1">⭐ (1 ดาว - ควรปรับปรุง)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ข้อเสนอแนะเพิ่มเติม</label>
+                            <textarea id="rev-comment" rows="2" placeholder="พิมพ์ข้อเสนอแนะของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-sm cursor-pointer">
+                            ส่งข้อเสนอแนะ 🚀
+                        </button>
+                    </form>
+
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-xs text-slate-800 flex items-center justify-between">
+                            <span>💬 ความคิดเห็นทั้งหมดจากผู้ใช้งาน</span>
+                            <span id="review-count" class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">0 รายการ</span>
+                        </h4>
+                        <div id="reviews-list-container" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                            <p class="text-center text-xs text-slate-400 py-4">กำลังโหลดข้อมูลรีวิว...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================================================================= -->
     <!-- =================================================== -->
     <!-- หน้าที่ 3: หน้าแดชบอร์ดผู้ดูแลระบบ (Admin Dashboard Page) -->
     <!-- =================================================== -->
@@ -907,24 +978,36 @@
             }
         });
 
-        function navigateTo(pageId) {
-            document.getElementById('page-gate').classList.add('hidden');
-            document.getElementById('page-app').classList.add('hidden');
-            document.getElementById('page-admin').classList.add('hidden');
-            document.body.classList.remove('no-scroll');
+      function navigateTo(pageId) {
+    document.getElementById('page-gate').classList.add('hidden');
+    document.getElementById('page-app').classList.add('hidden');
+    document.getElementById('page-admin').classList.add('hidden');
+    document.body.classList.remove('no-scroll');
 
-            if (pageId === 'page-gate') {
-                document.body.classList.add('no-scroll');
-                document.getElementById('page-gate').classList.remove('hidden');
-            } else if (pageId === 'page-app') {
-                document.getElementById('page-app').classList.remove('hidden');
-                renderShops();
-            } else if (pageId === 'page-admin') {
-                document.getElementById('page-admin').classList.remove('hidden');
-                renderAdminDashboard();
-            }
+    if (pageId === 'page-gate') {
+        document.body.classList.add('no-scroll');
+        document.getElementById('page-gate').classList.remove('hidden');
+    } else if (pageId === 'page-app') {
+        document.getElementById('page-app').classList.remove('hidden');
+        renderShops();
+
+        // 🌟 แสดงกล่องรีวิวทุกครั้งที่เข้ามาหน้าหลัก
+        const reviewWidget = document.getElementById('review-widget-container');
+        if (reviewWidget) {
+            reviewWidget.classList.remove('hidden');
         }
-        window.navigateTo = navigateTo;
+    } else if (pageId === 'page-admin') {
+        document.getElementById('page-admin').classList.remove('hidden');
+        renderAdminDashboard();
+        
+        // ซ่อนกล่องรีวิวเมื่ออยู่หน้า Admin
+        const reviewWidget = document.getElementById('review-widget-container');
+        if (reviewWidget) {
+            reviewWidget.classList.add('hidden');
+        }
+    }
+}
+window.navigateTo = navigateTo;
 
         // จัดการเข้าสู่ระบบแบบปกติ
         async function handleLoginWithWeb3(event) {
@@ -1554,6 +1637,105 @@
             detailView.classList.add('hidden');
             menuView.classList.remove('hidden');
             window.scrollTo(0, 0);
+        };
+   // =================================================================
+        // 🌟 ระบบควบคุมกล่องรีวิวและเชื่อมต่อ Firebase สำหรับรีวิวเว็บไซต์
+        // =================================================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const isClosed = sessionStorage.getItem('review_closed_permanently');
+            const reviewWidget = document.getElementById('review-widget-container');
+            const pageApp = document.getElementById('page-app');
+
+            if (reviewWidget && !isClosed && pageApp && !pageApp.classList.contains('hidden')) {
+                reviewWidget.classList.remove('hidden');
+            }
+        });
+
+        window.closeReviewPermanently = function() {
+            const reviewWidget = document.getElementById('review-widget-container');
+            if (reviewWidget) {
+                reviewWidget.classList.add('hidden');
+                sessionStorage.setItem('review_closed_permanently', 'true');
+            }
+        };
+
+        window.openReviewModal = function() {
+            document.getElementById('review-modal').classList.remove('hidden');
+            window.loadReviewsFromFirebase();
+        };
+
+        window.closeReviewModal = function() {
+            document.getElementById('review-modal').classList.add('hidden');
+        };
+
+        window.submitReviewToFirebase = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('rev-name').value;
+            const rating = document.getElementById('rev-rating').value;
+            const comment = document.getElementById('rev-comment').value;
+            const timestamp = new Date().toLocaleString('th-TH');
+
+            const reviewsRef = ref(db, 'site_reviews');
+            const newReviewRef = push(reviewsRef);
+
+            set(newReviewRef, {
+                name: name,
+                rating: rating,
+                comment: comment,
+                timestamp: timestamp
+            }).then(() => {
+                alert('ขอบคุณสำหรับรีวิวครับ! บันทึกลงระบบเรียบร้อยแล้ว 🎉');
+                document.getElementById('rev-name').value = '';
+                document.getElementById('rev-comment').value = '';
+                window.closeReviewModal();
+            }).catch((error) => {
+                alert('เกิดข้อผิดพลาด: ' + error.message);
+            });
+        };
+
+        window.loadReviewsFromFirebase = function() {
+            const reviewsRef = ref(db, 'site_reviews');
+            const container = document.getElementById('reviews-list-container');
+            const countBadge = document.getElementById('review-count');
+
+            onValue(reviewsRef, (snapshot) => {
+                container.innerHTML = '';
+                const data = snapshot.val();
+                
+                if (!data) {
+                    container.innerHTML = '<p class="text-center text-xs text-slate-400 py-4">ยังไม่มีรีวิว เป็นคนแรกที่รีวิวเลย! ✨</p>';
+                    countBadge.innerText = '0 รายการ';
+                    return;
+                }
+
+                let reviewsArray = Object.entries(data);
+                countBadge.innerText = `${reviewsArray.length} รายการ`;
+                reviewsArray.reverse();
+
+                reviewsArray.forEach(([id, item]) => {
+                    let stars = '⭐'.repeat(Number(item.rating));
+                    let card = document.createElement('div');
+                    card.className = 'bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-1 relative';
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-xs text-slate-900">${item.name}</span>
+                            <span class="text-[10px] text-amber-500 font-bold">${stars}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">${item.comment}</p>
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-[9px] text-slate-400">${item.timestamp}</span>
+                           
+                    `;
+                    container.appendChild(card);
+                });
+            });
+        };
+
+        window.deleteReview = function(id) {
+            if (confirm('ต้องการลบความคิดเห็นนี้ใช่หรือไม่?')) {
+                const reviewItemRef = ref(db, `site_reviews/${id}`);
+                remove(reviewItemRef);
+            }
         };
     </script>
 </body>
