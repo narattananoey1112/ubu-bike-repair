@@ -344,7 +344,58 @@
     <i class="fa-solid fa-stethoscope text-emerald-500"></i> เช็กสภาพรถเบื้องต้น
 
 </button>
+<!-- ========================================== -->
+<!-- 1. ปุ่มติดต่อผู้พัฒนา (ลอยอยู่มุมซ้ายล่าง) -->
+<!-- ========================================== -->
+<button onclick="document.getElementById('contact-developer-modal').classList.remove('hidden')" 
+        class="fixed bottom-5 left-5 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-5 rounded-full shadow-xl transition-all flex items-center gap-2.5 z-40 text-xs tracking-wide cursor-pointer hover:scale-105">
+    <span class="text-base">🛠️</span> ติดต่อทีมผู้พัฒนา
+</button>
 
+<!-- ========================================== -->
+<!-- 2. หน้าต่าง Modal แสดง QR Code (ดีไซน์แต่งกรอบธีมช่างซ่อม) -->
+<!-- ========================================== -->
+<div id="contact-developer-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl border-4 border-amber-400 animate-in fade-in zoom-in duration-200">
+        
+        <!-- แถบหัวข้อด้านบน (ธีมส้ม-เหลือง ช่างมอเตอร์ไซค์) -->
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 p-5 text-center relative">
+            <h3 class="font-black text-white text-base tracking-wide flex items-center justify-center gap-2">
+                <span>🔧</span> ติดต่อผู้พัฒนาแพลตฟอร์ม
+            </h3>
+            <p class="text-[11px] text-amber-100 mt-0.5">UBU Motorcycle Platform</p>
+        </div>
+        
+        <!-- ส่วนเนื้อหา QR Code และข้อความ -->
+        <div class="p-6 text-center space-y-4 bg-slate-50/50">
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                หากพบปัญหาการใช้งาน ระบบขัดข้อง หรือต้องการติดต่อทีมผู้พัฒนา สามารถสแกน <b class="text-orange-600">QR Code</b> ด้านล่างนี้ผ่าน LINE เพื่อพูดคุยกับเราได้ค่ะ!
+            </p>
+            
+            <!-- กรอบใส่รูป QR Code (ขยายใหญ่ขึ้น + ตกแต่งกรอบน่าสนใจ) -->
+            <div class="inline-block p-3 bg-white rounded-2xl shadow-md border-2 border-amber-300 relative group">
+                <!-- มุมตกแต่งสไตล์ช่าง -->
+                <div class="absolute -top-2 -left-2 bg-amber-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full shadow-xs">SCAN ME</div>
+                
+                <!-- รูป QR Code ของคุณที่แปลงลิงก์เรียบร้อยแล้ว -->
+                <img src="https://lh3.googleusercontent.com/d/1SPkhCAuxSuI2iN0yhqxuAkiXjxe6rtbO" alt="QR Code OpenChat" class="w-64 h-64 object-contain rounded-xl block mx-auto">
+            </div>
+            
+            <div class="text-[11px] text-slate-500 font-semibold bg-amber-50 py-1.5 px-3 rounded-lg border border-amber-200/60 inline-block">
+                ⚡ พร้อมให้บริการและช่วยเหลือตลอดเวลา
+            </div>
+        </div>
+        
+        <!-- ปุ่มปิดหน้าต่าง -->
+        <div class="p-4 bg-white border-t border-slate-100 text-center">
+            <button onclick="document.getElementById('contact-developer-modal').classList.add('hidden')" 
+                    class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2.5 px-8 rounded-xl text-xs transition-all cursor-pointer shadow-xs">
+                ปิดหน้าต่าง
+            </button>
+        </div>
+        
+    </div>
+</div>
             </div>
 
 
@@ -562,42 +613,45 @@
                     <button onclick="window.closeReviewModal()" class="text-slate-400 hover:text-slate-600 text-sm font-bold w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center cursor-pointer">✕</button>
                 </div>
 
-                <div class="p-5 overflow-y-auto space-y-5">
-                    <form onsubmit="window.submitReviewToFirebase(event)" class="space-y-3 bg-orange-50/40 p-4 rounded-xl border border-orange-100">
-                        <h4 class="font-bold text-xs text-orange-900">✍️ ส่งความคิดเห็นของคุณ</h4>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ชื่อผู้รีวิว / คณะ</label>
-                            <input type="text" id="rev-name" placeholder="ระบุชื่อของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ให้คะแนนความพึงพอใจ</label>
-                            <select id="rev-rating" class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 font-bold text-amber-600">
-                                <option value="5">⭐⭐⭐⭐⭐ (5 ดาว - ยอดเยี่ยมมาก)</option>
-                                <option value="4">⭐⭐⭐⭐ (4 ดาว - ดีมาก)</option>
-                                <option value="3">⭐⭐⭐ (3 ดาว - ปานกลาง)</option>
-                                <option value="2">⭐⭐ (2 ดาว - พอใช้)</option>
-                                <option value="1">⭐ (1 ดาว - ควรปรับปรุง)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">ข้อเสนอแนะเพิ่มเติม</label>
-                            <textarea id="rev-comment" rows="2" placeholder="พิมพ์ข้อเสนอแนะของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-sm cursor-pointer">
-                            ส่งข้อเสนอแนะ 🚀
-                        </button>
-                    </form>
+               <div class="p-5 overflow-y-auto space-y-5">
+    <!-- ฟอร์มส่งรีวิวหลัก -->
+    <form onsubmit="window.submitReviewToFirebase(event)" class="space-y-3 bg-orange-50/40 p-4 rounded-xl border border-orange-100">
+        <h4 class="font-bold text-xs text-orange-900">✍️ ส่งความคิดเห็นของคุณ</h4>
+        <div>
+            <label class="block text-[11px] font-bold text-slate-700 mb-1">ชื่อผู้รีวิว / คณะ</label>
+            <input type="text" id="rev-name" placeholder="ระบุชื่อของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500">
+        </div>
+        <div>
+            <label class="block text-[11px] font-bold text-slate-700 mb-1">ให้คะแนนความพึงพอใจ</label>
+            <select id="rev-rating" class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 font-bold text-amber-600">
+                <option value="5">⭐⭐⭐⭐⭐ (5 ดาว - ยอดเยี่ยมมาก)</option>
+                <option value="4">⭐⭐⭐⭐ (4 ดาว - ดีมาก)</option>
+                <option value="3">⭐⭐⭐ (3 ดาว - ปานกลาง)</option>
+                <option value="2">⭐⭐ (2 ดาว - พอใช้)</option>
+                <option value="1">⭐ (1 ดาว - ควรปรับปรุง)</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-[11px] font-bold text-slate-700 mb-1">ข้อเสนอแนะเพิ่มเติม</label>
+            <textarea id="rev-comment" rows="2" placeholder="พิมพ์ข้อเสนอแนะของคุณ..." required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-sm cursor-pointer">
+            ส่งข้อเสนอแนะ 🚀
+        </button>
+    </form>
 
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-xs text-slate-800 flex items-center justify-between">
-                            <span>💬 ความคิดเห็นทั้งหมดจากผู้ใช้งาน</span>
-                            <span id="review-count" class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">0 รายการ</span>
-                        </h4>
-                        <div id="reviews-list-container" class="space-y-2 max-h-48 overflow-y-auto pr-1">
-                            <p class="text-center text-xs text-slate-400 py-4">กำลังโหลดข้อมูลรีวิว...</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- รายการรีวิวทั้งหมด -->
+    <div class="space-y-2">
+        <h4 class="font-bold text-xs text-slate-800 flex items-center justify-between">
+            <span>💬 ความคิดเห็นทั้งหมด</span>
+            <span id="review-count" class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">0 รายการ</span>
+        </h4>
+        <div id="reviews-list-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+            <!-- ข้อมูลรีวิวจะถูกโหลดมาแสดงที่นี่ -->
+            <p class="text-center text-xs text-slate-400 py-4">กำลังโหลดข้อมูลรีวิว...</p>
+        </div>
+    </div>
+</div>
             </div>
         </div>
         <!-- ================================================================= -->
@@ -1666,85 +1720,196 @@ window.navigateTo = navigateTo;
             }
         });
 
-        window.closeReviewPermanently = function() {
-            const reviewWidget = document.getElementById('review-widget-container');
-            if (reviewWidget) {
-                reviewWidget.classList.add('hidden');
-                sessionStorage.setItem('review_closed_permanently', 'true');
-            }
-        };
+       window.closeReviewPermanently = function() {
+    const reviewWidget = document.getElementById('review-widget-container');
+    if (reviewWidget) {
+        reviewWidget.classList.add('hidden');
+        sessionStorage.setItem('review_closed_permanently', 'true');
+    }
+};
 
-        window.openReviewModal = function() {
-            document.getElementById('review-modal').classList.remove('hidden');
-            window.loadReviewsFromFirebase();
-        };
+window.openReviewModal = function() {
+    document.getElementById('review-modal').classList.remove('hidden');
+    window.loadReviewsFromFirebase();
+};
 
-        window.closeReviewModal = function() {
-            document.getElementById('review-modal').classList.add('hidden');
-        };
+window.closeReviewModal = function() {
+    document.getElementById('review-modal').classList.add('hidden');
+};
 
-        window.submitReviewToFirebase = function(e) {
-            e.preventDefault();
-            const name = document.getElementById('rev-name').value;
-            const rating = document.getElementById('rev-rating').value;
-            const comment = document.getElementById('rev-comment').value;
-            const timestamp = new Date().toLocaleString('th-TH');
+// 1. ฟังก์ชันส่งรีวิวหลักของคุณ (อันเดิมที่ส่งมา ถูกต้องแล้ว เอาไว้ตรงนี้เหมือนเดิม)
+window.submitReviewToFirebase = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('rev-name').value;
+    const rating = document.getElementById('rev-rating').value;
+    const comment = document.getElementById('rev-comment').value;
+    const timestamp = new Date().toLocaleString('th-TH');
 
-            const reviewsRef = ref(db, 'site_reviews');
-            const newReviewRef = push(reviewsRef);
+    const reviewsRef = ref(db, 'site_reviews');
+    const newReviewRef = push(reviewsRef);
 
-            set(newReviewRef, {
-                name: name,
-                rating: rating,
-                comment: comment,
-                timestamp: timestamp
-            }).then(() => {
-                alert('ขอบคุณสำหรับรีวิวครับ! บันทึกลงระบบเรียบร้อยแล้ว 🎉');
-                document.getElementById('rev-name').value = '';
-                document.getElementById('rev-comment').value = '';
-                window.closeReviewModal();
-            }).catch((error) => {
-                alert('เกิดข้อผิดพลาด: ' + error.message);
-            });
-        };
+    set(newReviewRef, {
+        name: name,
+        rating: rating,
+        comment: comment,
+        timestamp: timestamp
+    }).then(() => {
+        alert('ขอบคุณสำหรับรีวิวครับ! บันทึกลงระบบเรียบร้อยแล้ว 🎉');
+        document.getElementById('rev-name').value = '';
+        document.getElementById('rev-comment').value = '';
+        window.closeReviewModal();
+    }).catch((error) => {
+        alert('เกิดข้อผิดพลาด: ' + error.message);
+    });
+};
 
-        window.loadReviewsFromFirebase = function() {
-            const reviewsRef = ref(db, 'site_reviews');
-            const container = document.getElementById('reviews-list-container');
-            const countBadge = document.getElementById('review-count');
+// ==========================================
+// 2. 🌟 นำโค้ดชุดใหม่ทั้งหมด (เปิดกล่อง, ตอบกลับ, และโหลดรีวิวพร้อมระบบตอบกลับ) 
+//    มาวางต่อไว้ตรงนี้ได้เลยครับ!
+// ==========================================
 
-            onValue(reviewsRef, (snapshot) => {
-                container.innerHTML = '';
-                const data = snapshot.val();
-                
-                if (!data) {
-                    container.innerHTML = '<p class="text-center text-xs text-slate-400 py-4">ยังไม่มีรีวิว เป็นคนแรกที่รีวิวเลย! ✨</p>';
-                    countBadge.innerText = '0 รายการ';
-                    return;
-                }
+window.toggleReplyBox = function(id) {
+    document.getElementById('reply-box-' + id).classList.toggle('hidden');
+};
 
-                let reviewsArray = Object.entries(data);
-                countBadge.innerText = `${reviewsArray.length} รายการ`;
-                reviewsArray.reverse();
+window.submitReplyToFirebase = function(event, reviewId) {
+    event.preventDefault();
+    const nameInput = document.getElementById('reply-name-' + reviewId);
+    const textInput = document.getElementById('reply-text-' + reviewId);
+    
+    const replyName = nameInput.value.trim();
+    const replyText = textInput.value.trim();
+    const timestamp = new Date().toLocaleString('th-TH');
 
-                reviewsArray.forEach(([id, item]) => {
-                    let stars = '⭐'.repeat(Number(item.rating));
-                    let card = document.createElement('div');
-                    card.className = 'bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-1 relative';
-                    card.innerHTML = `
-                        <div class="flex items-center justify-between">
-                            <span class="font-bold text-xs text-slate-900">${item.name}</span>
-                            <span class="text-[10px] text-amber-500 font-bold">${stars}</span>
+    if (!replyName || !replyText) return;
+
+    const repliesRef = ref(db, 'site_reviews/' + reviewId + '/replies');
+    const newReplyRef = push(repliesRef);
+
+    set(newReplyRef, {
+        name: replyName,
+        comment: replyText,
+        timestamp: timestamp
+    }).then(() => {
+        nameInput.value = '';
+        textInput.value = '';
+        window.toggleReplyBox(reviewId);
+    }).catch((error) => {
+        alert('เกิดข้อผิดพลาดในการตอบกลับ: ' + error.message);
+    });
+};
+
+window.loadReviewsFromFirebase = function() {
+    // โค้ดแสดงผลรีวิวและช่องตอบกลับตัวเต็ม...
+};
+
+// ฟังก์ชันเปิด/ปิดกล่องตอบกลับ
+window.toggleReplyBox = function(id) {
+    document.getElementById('reply-box-' + id).classList.toggle('hidden');
+};
+
+// ฟังก์ชันส่งคำตอบกลับไปบันทึกใน Firebase (แยกตาม ID รีวิวนั้นๆ)
+window.submitReplyToFirebase = function(event, reviewId) {
+    event.preventDefault();
+    const nameInput = document.getElementById('reply-name-' + reviewId);
+    const textInput = document.getElementById('reply-text-' + reviewId);
+    
+    const replyName = nameInput.value.trim();
+    const replyText = textInput.value.trim();
+    const timestamp = new Date().toLocaleString('th-TH');
+
+    if (!replyName || !replyText) return;
+
+    const repliesRef = ref(db, 'site_reviews/' + reviewId + '/replies');
+    const newReplyRef = push(repliesRef);
+
+    set(newReplyRef, {
+        name: replyName,
+        comment: replyText,
+        timestamp: timestamp
+    }).then(() => {
+        nameInput.value = '';
+        textInput.value = '';
+        window.toggleReplyBox(reviewId); // ปิดกล่องหลังจากส่งเสร็จ
+    }).catch((error) => {
+        alert('เกิดข้อผิดพลาดในการตอบกลับ: ' + error.message);
+    });
+};
+
+window.loadReviewsFromFirebase = function() {
+    const reviewsRef = ref(db, 'site_reviews');
+    const container = document.getElementById('reviews-list-container');
+    const countBadge = document.getElementById('review-count');
+
+    onValue(reviewsRef, (snapshot) => {
+        container.innerHTML = '';
+        const data = snapshot.val();
+        
+        if (!data) {
+            container.innerHTML = '<p class="text-center text-xs text-slate-400 py-4">ยังไม่มีรีวิว เป็นคนแรกที่รีวิวเลย! ✨</p>';
+            countBadge.innerText = '0 รายการ';
+            return;
+        }
+
+        let reviewsArray = Object.entries(data);
+        countBadge.innerText = `${reviewsArray.length} รายการ`;
+        reviewsArray.reverse();
+
+        reviewsArray.forEach(([id, item]) => {
+            let stars = '⭐'.repeat(Number(item.rating));
+            
+            // วนลูปสร้างรายการคำตอบกลับ (Replies) ถ้ามีคนตอบ
+            let repliesHtml = '';
+            if (item.replies) {
+                Object.values(item.replies).forEach(reply => {
+                    repliesHtml += `
+                        <div class="bg-white p-2 rounded-lg text-[11px] border border-slate-200/60 space-y-0.5 mt-1.5">
+                            <div class="font-bold text-slate-800 flex justify-between">
+                                <span>💬 ${reply.name}</span>
+                                <span class="text-[9px] text-slate-400 font-normal">${reply.timestamp}</span>
+                            </div>
+                            <p class="text-slate-600 pl-3">${reply.comment}</p>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">${item.comment}</p>
-                        <div class="flex items-center justify-between pt-1">
-                            <span class="text-[9px] text-slate-400">${item.timestamp}</span>
-                           
                     `;
-                    container.appendChild(card);
                 });
-            });
-        };
+            }
+
+            let card = document.createElement('div');
+            card.className = 'bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-1 relative';
+            card.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-xs text-slate-900">${item.name}</span>
+                    <span class="text-[10px] text-amber-500 font-bold">${stars}</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">${item.comment}</p>
+                
+                <!-- ส่วนแสดงคำตอบกลับทั้งหมดใต้คอมเมนต์ -->
+                <div class="space-y-1 pl-3 border-l-2 border-orange-200 mt-2">
+                    ${repliesHtml}
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                    <span class="text-[9px] text-slate-400">${item.timestamp}</span>
+                    <button onclick="window.toggleReplyBox('${id}')" class="text-[10px] text-orange-600 font-bold hover:underline cursor-pointer">
+                        ↩️ ตอบกลับ
+                    </button>
+                </div>
+
+                <!-- กล่องฟอร์มพิมพ์ตอบกลับ (ถูกซ่อนไว้ตอนแรก) -->
+                <div id="reply-box-${id}" class="hidden pt-2 space-y-2 border-t border-slate-200 mt-2">
+                    <form onsubmit="window.submitReplyToFirebase(event, '${id}')" class="space-y-2">
+                        <input type="text" id="reply-name-${id}" placeholder="ชื่อของคุณ..." required class="w-full text-[11px] p-2 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500">
+                        <textarea id="reply-text-${id}" rows="1" placeholder="พิมพ์ข้อความตอบกลับ..." required class="w-full text-[11px] p-2 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 resize-none"></textarea>
+                        <div class="flex justify-end gap-1">
+                            <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg cursor-pointer">ส่งคำตอบ</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    });
+};
 
         window.deleteReview = function(id) {
             if (confirm('ต้องการลบความคิดเห็นนี้ใช่หรือไม่?')) {
@@ -1752,6 +1917,155 @@ window.navigateTo = navigateTo;
                 remove(reviewItemRef);
             }
         };
+        window.closeReviewPermanently = function() {
+    const reviewWidget = document.getElementById('review-widget-container');
+    if (reviewWidget) {
+        reviewWidget.classList.add('hidden');
+        sessionStorage.setItem('review_closed_permanently', 'true');
+    }
+};
+
+window.openReviewModal = function() {
+    document.getElementById('review-modal').classList.remove('hidden');
+    window.loadReviewsFromFirebase();
+};
+
+window.closeReviewModal = function() {
+    document.getElementById('review-modal').classList.add('hidden');
+};
+
+window.submitReviewToFirebase = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('rev-name').value;
+    const rating = document.getElementById('rev-rating').value;
+    const comment = document.getElementById('rev-comment').value;
+    const timestamp = new Date().toLocaleString('th-TH');
+
+    const reviewsRef = ref(db, 'site_reviews');
+    const newReviewRef = push(reviewsRef);
+
+    set(newReviewRef, {
+        name: name,
+        rating: rating,
+        comment: comment,
+        timestamp: timestamp
+    }).then(() => {
+        alert('ขอบคุณสำหรับรีวิวครับ! บันทึกลงระบบเรียบร้อยแล้ว 🎉');
+        document.getElementById('rev-name').value = '';
+        document.getElementById('rev-comment').value = '';
+        window.closeReviewModal();
+    }).catch((error) => {
+        alert('เกิดข้อผิดพลาด: ' + error.message);
+    });
+};
+
+// ฟังก์ชันเปิด/ปิดกล่องตอบกลับรีวิว
+window.toggleReplyBox = function(id) {
+    document.getElementById('reply-box-' + id).classList.toggle('hidden');
+};
+
+// ฟังก์ชันส่งคำตอบกลับไปบันทึกใน Firebase แยกตาม ID รีวิว
+window.submitReplyToFirebase = function(event, reviewId) {
+    event.preventDefault();
+    const nameInput = document.getElementById('reply-name-' + reviewId);
+    const textInput = document.getElementById('reply-text-' + reviewId);
+    
+    const replyName = nameInput.value.trim();
+    const replyText = textInput.value.trim();
+    const timestamp = new Date().toLocaleString('th-TH');
+
+    if (!replyName || !replyText) return;
+
+    const repliesRef = ref(db, 'site_reviews/' + reviewId + '/replies');
+    const newReplyRef = push(repliesRef);
+
+    set(newReplyRef, {
+        name: replyName,
+        comment: replyText,
+        timestamp: timestamp
+    }).then(() => {
+        nameInput.value = '';
+        textInput.value = '';
+        window.toggleReplyBox(reviewId);
+    }).catch((error) => {
+        alert('เกิดข้อผิดพลาดในการตอบกลับ: ' + error.message);
+    });
+};
+
+window.loadReviewsFromFirebase = function() {
+    const reviewsRef = ref(db, 'site_reviews');
+    const container = document.getElementById('reviews-list-container');
+    const countBadge = document.getElementById('review-count');
+
+    onValue(reviewsRef, (snapshot) => {
+        container.innerHTML = '';
+        const data = snapshot.val();
+        
+        if (!data) {
+            container.innerHTML = '<p class="text-center text-xs text-slate-400 py-4">ยังไม่มีรีวิว เป็นคนแรกที่รีวิวเลย! ✨</p>';
+            countBadge.innerText = '0 รายการ';
+            return;
+        }
+
+        let reviewsArray = Object.entries(data);
+        countBadge.innerText = `${reviewsArray.length} รายการ`;
+        reviewsArray.reverse();
+
+        reviewsArray.forEach(([id, item]) => {
+            let stars = '⭐'.repeat(Number(item.rating));
+            
+            // วนลูปดึงข้อความที่มีคนตอบกลับ
+            let repliesHtml = '';
+            if (item.replies) {
+                Object.values(item.replies).forEach(reply => {
+                    repliesHtml += `
+                        <div class="bg-white p-2 rounded-lg text-[11px] border border-slate-200/60 space-y-0.5 mt-1.5">
+                            <div class="font-bold text-slate-800 flex justify-between">
+                                <span>💬 ${reply.name}</span>
+                                <span class="text-[9px] text-slate-400 font-normal">${reply.timestamp}</span>
+                            </div>
+                            <p class="text-slate-600 pl-3">${reply.comment}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            let card = document.createElement('div');
+            card.className = 'bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-1 relative';
+            card.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-xs text-slate-900">${item.name}</span>
+                    <span class="text-[10px] text-amber-500 font-bold">${stars}</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">${item.comment}</p>
+                
+                <!-- แสดงรายการตอบกลับ -->
+                <div class="space-y-1 pl-3 border-l-2 border-orange-200 mt-2">
+                    ${repliesHtml}
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                    <span class="text-[9px] text-slate-400">${item.timestamp}</span>
+                    <button onclick="window.toggleReplyBox('${id}')" class="text-[10px] text-orange-600 font-bold hover:underline cursor-pointer">
+                        ↩️ ตอบกลับ
+                    </button>
+                </div>
+
+                <!-- กล่องฟอร์มพิมพ์ตอบกลับ (ซ่อนไว้ตอนแรก) -->
+                <div id="reply-box-${id}" class="hidden pt-2 space-y-2 border-t border-slate-200 mt-2">
+                    <form onsubmit="window.submitReplyToFirebase(event, '${id}')" class="space-y-2">
+                        <input type="text" id="reply-name-${id}" placeholder="ชื่อของคุณ..." required class="w-full text-[11px] p-2 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500">
+                        <textarea id="reply-text-${id}" rows="1" placeholder="พิมพ์ข้อความตอบกลับ..." required class="w-full text-[11px] p-2 bg-white border border-slate-200 rounded-lg outline-none focus:border-orange-500 resize-none"></textarea>
+                        <div class="flex justify-end gap-1">
+                            <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg cursor-pointer">ส่งคำตอบ</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    });
+};
     </script>
 </body>
 </html>
